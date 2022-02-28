@@ -20,7 +20,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             //获取鼠标移动距离
             float rh = Input.GetAxis("Mouse X");
