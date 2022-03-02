@@ -7,6 +7,7 @@ namespace Ubiq.Samples
 {
     public class FollowGraspable : MonoBehaviour, IGraspable
     {
+        public bool grasped=false;
         private Vector3 localGrabPoint;
         private Quaternion localGrabRotation;
         private Quaternion grabHandRotation;
@@ -14,6 +15,7 @@ namespace Ubiq.Samples
 
         public void Grasp(Hand controller)
         {
+            grasped = true;
             var handTransform = controller.transform;
             localGrabPoint = handTransform.InverseTransformPoint(transform.position); //transform.InverseTransformPoint(handTransform.position);
             localGrabRotation = Quaternion.Inverse(handTransform.rotation) * transform.rotation;
@@ -23,6 +25,7 @@ namespace Ubiq.Samples
 
         public void Release(Hand controller)
         {
+            grasped = false;
             follow = null;
         }
 

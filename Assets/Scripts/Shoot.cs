@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ubiq.Samples;
 
 public class Shoot : MonoBehaviour
 {
     public float range = 100f;
 
+    private bool grasped;
+
     float timer;
-    float effectDisplayTime = 0.5f;
+    float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
     //int shootableMask;
     LineRenderer laser;
     List<Vector3> laserIndices;
@@ -16,21 +19,45 @@ public class Shoot : MonoBehaviour
     void Start()
     {
         //shootableMask = LayerMask.GetMask("Shootable");
+        // LineRenderer for the laser
         laser = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        bool shooting=false;
+        grasped = GameObject.Find("Sci_fi_Pistol1").GetComponent<FollowGraspable>().grasped;
+        // Update time for one frame
         timer += Time.deltaTime;
-        if (Input.GetButton("Fire1"))
+        Debug.Log(grasped);
+        if (Input.GetButton("Fire1") && grasped)
         {
             BeginShoot();
         }
-        if(timer >= effectDisplayTime)
+        else
         {
             laser.enabled = false;
         }
+
+        
+        //if (timer >= effectDisplayTime)
+        //{
+        //    laser.enabled = false;
+        //}
+        //bool shooting;
+        //grasped = GameObject.Find("Sci_fi_Pistol1").GetComponent<FollowGraspable>().grasped;
+        //// Update time for one frame
+        //timer += Time.deltaTime;
+        //Debug.Log(grasped);
+        //if (Input.GetButton("Fire1") && grasped)
+        //{
+        //    BeginShoot();
+        //}
+        //if (timer >= effectDisplayTime)
+        //{
+        //    laser.enabled = false;
+        //}
     }
     void BeginShoot()
     {
