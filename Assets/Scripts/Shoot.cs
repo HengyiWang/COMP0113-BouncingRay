@@ -9,6 +9,8 @@ public class Shoot : MonoBehaviour
 
     private bool grasped;
 
+    public int score = 0;
+
     float timer;
     float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
     //int shootableMask;
@@ -26,11 +28,9 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool shooting=false;
         grasped = GameObject.Find("Sci_fi_Pistol1").GetComponent<FollowGraspable>().grasped;
         // Update time for one frame
         timer += Time.deltaTime;
-        Debug.Log(grasped);
         if (Input.GetButton("Fire1") && grasped)
         {
             BeginShoot();
@@ -38,26 +38,8 @@ public class Shoot : MonoBehaviour
         else
         {
             laser.enabled = false;
+            GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
         }
-
-        
-        //if (timer >= effectDisplayTime)
-        //{
-        //    laser.enabled = false;
-        //}
-        //bool shooting;
-        //grasped = GameObject.Find("Sci_fi_Pistol1").GetComponent<FollowGraspable>().grasped;
-        //// Update time for one frame
-        //timer += Time.deltaTime;
-        //Debug.Log(grasped);
-        //if (Input.GetButton("Fire1") && grasped)
-        //{
-        //    BeginShoot();
-        //}
-        //if (timer >= effectDisplayTime)
-        //{
-        //    laser.enabled = false;
-        //}
     }
     void BeginShoot()
     {
@@ -65,10 +47,16 @@ public class Shoot : MonoBehaviour
         laser.enabled = true;
         laserIndices = new List<Vector3>();
         //laser.SetPosition(0,transform.position);
-        CastRay(transform.position, transform.forward, laser);
+        CastRay(transform.position, transform.forward, laser, true);
+        GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
+        score = 0;
+
+        laserIndices = new List<Vector3>();
+        CastRay(transform.position, transform.forward, laser, false);
     }
 
-    void CastRay(Vector3 pos,Vector3 dir,LineRenderer laser)
+
+    void CastRay(Vector3 pos,Vector3 dir,LineRenderer laser,bool calScore)
     {
         laserIndices.Add(pos);
         Ray ray = new Ray(pos,dir);
@@ -76,11 +64,13 @@ public class Shoot : MonoBehaviour
 
         if(Physics.Raycast(ray, out hitInfo, range, 1))
         {
-            CheckHit(hitInfo, dir, laser);
+            // if hit something, then checkhit
+            CheckHit(hitInfo, dir, laser, calScore);
             //laser.SetPosition(1, hitInfo.point);
         }
         else
         {
+            // if not hit something, set the max range
             //laser.SetPosition(1, ray.origin+ ray.direction*range);
             laserIndices.Add(ray.GetPoint(range));
             updateLaser();
@@ -99,14 +89,25 @@ public class Shoot : MonoBehaviour
         }
     }
 
-    void CheckHit(RaycastHit hitInfo, Vector3 direction, LineRenderer laser)
+    void CheckHit(RaycastHit hitInfo, Vector3 direction, LineRenderer laser, bool calScore)
     {
         if (hitInfo.collider.gameObject.tag == "ReflectObject")
         {
+            if (!hitInfo.collider.gameObject.GetComponent<ScoreMirror>().hitted && calScore)
+            {
+                score += 1;
+                hitInfo.collider.gameObject.GetComponent<ScoreMirror>().hitted = true;
+            }
+
+            if (!calScore)
+            {
+                hitInfo.collider.gameObject.GetComponent<ScoreMirror>().hitted = false;
+
+            }
             //Debug.Log("Hit reflect object");
             Vector3 pos = hitInfo.point;
             Vector3 dir = Vector3.Reflect(direction,hitInfo.normal);
-            CastRay(pos, dir, laser);
+            CastRay(pos, dir, laser, calScore);
         }
         else
         {

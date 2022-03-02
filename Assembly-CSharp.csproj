@@ -122,8 +122,10 @@
     <Compile Include="Assets/Samples/Ubiq/0.2.0-alpha.4/Samples/Single/Rooms/Scripts/RoomClientJoinHelper.cs" />
     <Compile Include="Assets/Samples/Ubiq/0.2.0-alpha.4/Samples/Single/Spawning/PrefabsMenu.cs" />
     <Compile Include="Assets/Samples/Ubiq/0.2.0-alpha.4/Samples/Single/Spawning/SpawnPrefabControl.cs" />
+    <Compile Include="Assets/ScoreManager.cs" />
     <Compile Include="Assets/Scripts/CharacterMovement.cs" />
     <Compile Include="Assets/Scripts/Move.cs" />
+    <Compile Include="Assets/Scripts/ScoreMirror.cs" />
     <Compile Include="Assets/Scripts/Shoot.cs" />
     <Compile Include="Assets/Scripts/grasp.cs" />
   </ItemGroup>
