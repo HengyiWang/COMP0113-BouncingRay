@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
     public float gravity = 9.8f; // gravity acceleration
     public float jumpStrength = 10; // vertical jump initial speed
     public float charFloatHeight = 0.2f;
+    public float maxRaycastDist = 100.0f;
 
     public BoxCollider charCollider;
     //public GameObject head;  // should contains main camera
@@ -21,6 +22,8 @@ public class CharacterMovement : MonoBehaviour
     private Transform charTransform;
     private float distToGround;
     private Vector3 charNormal;
+
+    
 
     private void Start()
     {
@@ -44,9 +47,11 @@ public class CharacterMovement : MonoBehaviour
         RaycastHit hit;
         bool isGrounded;
         Vector3 currGroundNormal;
-        
+
+        int walkableMask = 1 << 8;  // 8th layer should be walkable mask
+
         Ray ray = new Ray(charTransform.position, -charNormal); // cast ray downwards
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, maxRaycastDist, walkableMask))
         { // use it to update myNormal and isGrounded
             isGrounded = hit.distance <= distToGround;
             currGroundNormal = hit.normal;
