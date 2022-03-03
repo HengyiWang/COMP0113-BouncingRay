@@ -326,6 +326,8 @@ GameObject:
   - component: {fileID: 583445457883611254}
   - component: {fileID: 1285823104}
   - component: {fileID: 731518826}
+  - component: {fileID: 95468150}
+  - component: {fileID: 95468149}
   m_Layer: 0
   m_Name: Mirror
   m_TagString: ReflectObject
@@ -398,3 +400,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56727d94b1d02344fad22dce8f98b6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &95468150
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583445457873165958}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!114 &95468149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583445457873165958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ff34dfeed804076bc58aa3744b6168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitted: 0
