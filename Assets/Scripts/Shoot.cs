@@ -28,7 +28,8 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grasped = GameObject.Find("Sci_fi_Pistol1").GetComponent<FollowGraspable>().grasped;
+        //GameObject.Find("Sci_fi_Pistol1").
+        grasped = GetComponent<FollowGraspable>().grasped;
         // Update time for one frame
         timer += Time.deltaTime;
         if (Input.GetButton("Fire1") && grasped)
