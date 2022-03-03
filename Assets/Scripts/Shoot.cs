@@ -35,6 +35,7 @@ public class Shoot : MonoBehaviour
         if (Input.GetButton("Fire1") && grasped)
         {
             BeginShoot();
+            GetComponent<AudioSource>().Play();
         }
         else
         {
