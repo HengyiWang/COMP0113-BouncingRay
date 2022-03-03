@@ -12,7 +12,8 @@ namespace Ubiq.Samples
         private Quaternion localGrabRotation;
         private Quaternion grabHandRotation;
         private Transform follow;
-
+        Vector3 desiredForward;
+        private bool followRotation = false;
         public void Grasp(Hand controller)
         {
             grasped = true;
@@ -21,19 +22,32 @@ namespace Ubiq.Samples
             localGrabRotation = Quaternion.Inverse(handTransform.rotation) * transform.rotation;
             grabHandRotation = handTransform.rotation;
             follow = handTransform;
+
+            desiredForward = Vector3.RotateTowards(transform.forward,follow.forward, 180f, 0f);
+            
         }
 
         public void Release(Hand controller)
         {
             grasped = false;
             follow = null;
+            followRotation = false;
         }
 
         private void Update()
         {
             if (follow)
             {
-                transform.rotation = follow.rotation * localGrabRotation;
+                if (!followRotation)
+                {
+                    transform.rotation = Quaternion.LookRotation(desiredForward);
+                    localGrabRotation = Quaternion.Inverse(follow.rotation) * transform.rotation;
+                    followRotation = true;
+                }
+                else
+                {
+                    transform.rotation = follow.rotation * localGrabRotation;
+                }
                 transform.position = follow.TransformPoint(localGrabPoint);
             }
         }
