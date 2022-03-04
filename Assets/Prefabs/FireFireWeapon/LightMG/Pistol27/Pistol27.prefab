@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 488993083}
   - component: {fileID: 488993085}
   - component: {fileID: 488993088}
-  - component: {fileID: 488993086}
+  - component: {fileID: 7915106558084098492}
   - component: {fileID: 488993087}
   m_Layer: 0
   m_Name: Pistol27
@@ -307,7 +307,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &488993086
+--- !u!114 &7915106558084098492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

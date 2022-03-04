@@ -98,8 +98,8 @@ GameObject:
   - component: {fileID: 1465335709868882907}
   - component: {fileID: 356584055}
   - component: {fileID: 4960058315074339343}
-  - component: {fileID: 356584056}
   - component: {fileID: 8224328360440498398}
+  - component: {fileID: 8344574925950661872}
   m_Layer: 0
   m_Name: Sci_fi_Pistol1
   m_TagString: Pistol
@@ -309,19 +309,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 10.8168
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &356584056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465335708094805795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253d2c20858f4ac4eb3a607033123d7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grasped: 0
 --- !u!82 &8224328360440498398
 AudioSource:
   m_ObjectHideFlags: 0
@@ -418,3 +405,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8344574925950661872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465335708094805795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253d2c20858f4ac4eb3a607033123d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grasped: 0
