@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using Ubiq.XR;
 using UnityEngine;
 
-public class FollowGraspable : MonoBehaviour, IGraspable
+public class MyFollowGraspable : MonoBehaviour, IGraspable
 {
     public bool grasped = false;
-    private Vector3 localGrabPoint;
-    private Quaternion localGrabRotation;
+    protected Transform follow;
+    protected bool followRotation = false;
+
+    protected Vector3 localGrabPoint;
+    protected Quaternion localGrabRotation;
     private Quaternion grabHandRotation;
-    private Transform follow;
-    Vector3 desiredForward;
-    private bool followRotation = false;
+    
     public void Grasp(Hand controller)
     {
         grasped = true;
@@ -21,7 +22,6 @@ public class FollowGraspable : MonoBehaviour, IGraspable
         grabHandRotation = handTransform.rotation;
         follow = handTransform;
 
-        desiredForward = Vector3.RotateTowards(transform.forward, follow.forward, 180f, 0f);
 
     }
 
@@ -36,16 +36,7 @@ public class FollowGraspable : MonoBehaviour, IGraspable
     {
         if (follow)
         {
-            if (!followRotation)
-            {
-                transform.rotation = Quaternion.LookRotation(desiredForward);
-                localGrabRotation = Quaternion.Inverse(follow.rotation) * transform.rotation;
-                followRotation = true;
-            }
-            else
-            {
-                transform.rotation = follow.rotation * localGrabRotation;
-            }
+            transform.rotation = follow.rotation * localGrabRotation;
             transform.position = follow.TransformPoint(localGrabPoint);
         }
     }

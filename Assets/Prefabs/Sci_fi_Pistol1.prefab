@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 356584055}
   - component: {fileID: 4960058315074339343}
   - component: {fileID: 8224328360440498398}
-  - component: {fileID: 1772066511197076283}
+  - component: {fileID: 3665151645803806974}
   m_Layer: 0
   m_Name: Sci_fi_Pistol1
   m_TagString: Pistol
@@ -321,8 +321,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: eb3b9518c60ccb444b446a176b3dd1ac, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.481
-  m_Pitch: 1
+  m_Volume: 0.391
+  m_Pitch: 0.78
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -405,7 +405,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1772066511197076283
+--- !u!114 &3665151645803806974
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1465335708094805795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef1068066f4660746880c130d9c9ed5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 594afa2ea447c49bbb9ed63d2b1e0187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grasped: 0

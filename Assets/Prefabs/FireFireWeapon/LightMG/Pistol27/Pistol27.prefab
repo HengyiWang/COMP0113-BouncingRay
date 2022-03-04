@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 488993085}
   - component: {fileID: 488993088}
   - component: {fileID: 488993087}
-  - component: {fileID: 5104439105092165432}
+  - component: {fileID: 2292495416960691321}
   m_Layer: 0
   m_Name: Pistol27
   m_TagString: Untagged
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 100
   score: 0
---- !u!114 &5104439105092165432
+--- !u!114 &2292495416960691321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 197194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef1068066f4660746880c130d9c9ed5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 594afa2ea447c49bbb9ed63d2b1e0187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grasped: 0

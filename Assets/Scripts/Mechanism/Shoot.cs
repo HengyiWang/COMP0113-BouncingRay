@@ -29,7 +29,7 @@ public class Shoot : MonoBehaviour
     void Update()
     {
         //GameObject.Find("Sci_fi_Pistol1").
-        grasped = GetComponent<FollowGraspable>().grasped;
+        grasped = GetComponent<MyFollowGraspable>().grasped;
         // Update time for one frame
         timer += Time.deltaTime;
         if (Input.GetButton("Fire1") && grasped)
