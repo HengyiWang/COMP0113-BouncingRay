@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 488993083}
   - component: {fileID: 488993085}
   - component: {fileID: 488993088}
-  - component: {fileID: 7915106558084098492}
   - component: {fileID: 488993087}
+  - component: {fileID: 5104439105092165432}
   m_Layer: 0
   m_Name: Pistol27
   m_TagString: Untagged
@@ -307,19 +307,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &7915106558084098492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253d2c20858f4ac4eb3a607033123d7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grasped: 0
 --- !u!114 &488993087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,3 +321,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 100
   score: 0
+--- !u!114 &5104439105092165432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef1068066f4660746880c130d9c9ed5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grasped: 0
