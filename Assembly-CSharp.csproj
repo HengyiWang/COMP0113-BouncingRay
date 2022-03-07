@@ -126,7 +126,6 @@
     <Compile Include="Assets\Scenes\CharacterMovement.cs" />
     <Compile Include="Assets\Scenes\XRCharacterMovement.cs" />
     <Compile Include="Assets\Scenes\XRControl.cs" />
-    <Compile Include="Assets\Scripts\Interaction\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Interaction\GunGraspable.cs" />
     <Compile Include="Assets\Scripts\Interaction\Move.cs" />
     <Compile Include="Assets\Scripts\Interaction\MyFollowGraspable.cs" />
