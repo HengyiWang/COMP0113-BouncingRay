@@ -53,6 +53,7 @@
     <UnityVersion>2019.4.34f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Character.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Demo\DemoScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorCameraScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorReflectionScript.cs" />
@@ -122,6 +123,9 @@
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Single\Rooms\Scripts\RoomClientJoinHelper.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Single\Spawning\PrefabsMenu.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Single\Spawning\SpawnPrefabControl.cs" />
+    <Compile Include="Assets\Scenes\CharacterMovement.cs" />
+    <Compile Include="Assets\Scenes\XRCharacterMovement.cs" />
+    <Compile Include="Assets\Scenes\XRControl.cs" />
     <Compile Include="Assets\Scripts\Interaction\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Interaction\GunGraspable.cs" />
     <Compile Include="Assets\Scripts\Interaction\Move.cs" />
