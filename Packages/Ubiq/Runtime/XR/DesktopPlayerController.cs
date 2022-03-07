@@ -98,34 +98,34 @@ namespace Ubiq.XR
             transform.position += movement;
         }
 
-        private void OnGround()
-        {
-            var height = Mathf.Clamp(transform.InverseTransformPoint(headCamera.transform.position).y, 0.1f, float.PositiveInfinity);
-            var origin = transform.position + userLocalPosition + Vector3.up * height;
-            var direction = Vector3.down;
+        //private void OnGround()
+        //{
+        //    var height = Mathf.Clamp(transform.InverseTransformPoint(headCamera.transform.position).y, 0.1f, float.PositiveInfinity);
+        //    var origin = transform.position + userLocalPosition + Vector3.up * height;
+        //    var direction = Vector3.down;
 
-            RaycastHit hitInfo;
-            if(Physics.Raycast(new Ray(origin, direction), out hitInfo))
-            {
-                var virtualFloorHeight = hitInfo.point.y;
+        //    RaycastHit hitInfo;
+        //    if(Physics.Raycast(new Ray(origin, direction), out hitInfo))
+        //    {
+        //        var virtualFloorHeight = hitInfo.point.y;
 
-                if (transform.position.y < virtualFloorHeight)
-                {
-                    transform.position += Vector3.up * (virtualFloorHeight - transform.position.y) * Time.deltaTime * 3f;
-                    velocity = Vector3.zero;
-                }
-                else
-                {
-                    velocity += Physics.gravity * Time.deltaTime;
-                }
-            }
-            else
-            {
-                velocity = Vector3.zero; // if there is no 'ground' in the scene, then do nothing
-            }
+        //        if (transform.position.y < virtualFloorHeight)
+        //        {
+        //            transform.position += Vector3.up * (virtualFloorHeight - transform.position.y) * Time.deltaTime * 3f;
+        //            velocity = Vector3.zero;
+        //        }
+        //        else
+        //        {
+        //            velocity += Physics.gravity * Time.deltaTime;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        velocity = Vector3.zero; // if there is no 'ground' in the scene, then do nothing
+        //    }
 
-            transform.position += velocity * Time.deltaTime;
-        }
+        //    transform.position += velocity * Time.deltaTime;
+        //}
 
         private void FixedUpdate()
         {
@@ -133,11 +133,11 @@ namespace Ubiq.XR
             // Decoupling the feet in this way allows the user to do things like lean over edges, when the ground check is enabled.
             // This can be effectively disabled by setting the animation curve to a constant high value.
 
-            var headProjectionXZ = transform.InverseTransformPoint(headCamera.transform.position);
-            headProjectionXZ.y = 0;
-            userLocalPosition.x += (headProjectionXZ.x - userLocalPosition.x) * Time.deltaTime * cameraRubberBand.Evaluate(Mathf.Abs(headProjectionXZ.x - userLocalPosition.x));
-            userLocalPosition.z += (headProjectionXZ.z - userLocalPosition.z) * Time.deltaTime * cameraRubberBand.Evaluate(Mathf.Abs(headProjectionXZ.z - userLocalPosition.z));
-            userLocalPosition.y = 0;
+            //var headProjectionXZ = transform.InverseTransformPoint(headCamera.transform.position);
+            //headProjectionXZ.y = 0;
+            //userLocalPosition.x += (headProjectionXZ.x - userLocalPosition.x) * Time.deltaTime * cameraRubberBand.Evaluate(Mathf.Abs(headProjectionXZ.x - userLocalPosition.x));
+            //userLocalPosition.z += (headProjectionXZ.z - userLocalPosition.z) * Time.deltaTime * cameraRubberBand.Evaluate(Mathf.Abs(headProjectionXZ.z - userLocalPosition.z));
+            //userLocalPosition.y = 0;
         }
 
         private void Update()
@@ -150,8 +150,8 @@ namespace Ubiq.XR
                 cameraContainer.localEulerAngles = Vector3.zero;
             }
 
-            OnMouse();
-            OnKeys();
+            //OnMouse();
+            //OnKeys();
             //OnGround(); //todo: finish implementation
         }
 

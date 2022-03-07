@@ -146,9 +146,11 @@ namespace Ubiq.Avatars
             if (!playerAvatars.ContainsKey(peer.UUID))
             {
                 var prefab = AvatarCatalogue.GetPrefab(prefabUuid);
+                //GameObject createdPrefab = Instantiate(prefab, transform);
                 var created = Instantiate(prefab, transform).GetComponentInChildren<Avatar>();
                 created.Id = id;
                 created.SetPeer(peer);
+
 
                 playerAvatars.Add(peer.UUID, created);
 

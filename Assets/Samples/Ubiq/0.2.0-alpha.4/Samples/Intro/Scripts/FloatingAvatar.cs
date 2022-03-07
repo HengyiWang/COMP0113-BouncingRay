@@ -95,7 +95,11 @@ namespace Ubiq.Samples
 
         private void Update()
         {
-            UpdateTorso();
+            //UpdateTorso();
+
+
+            torso.position = head.position - head.up * 0.25f;
+            torso.rotation = head.rotation;
         }
 
         private void UpdateTorso()
