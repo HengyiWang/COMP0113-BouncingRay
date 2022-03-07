@@ -9,29 +9,46 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
     public bool freedom=false;
     private Vector3 desiredForward;
 
+    private Vector3 intialForward;
+
     private Vector3 calDesiredForward()
     {
         Vector3 newForward;
 
+        // Not free, then rotate around the up vector
         if (!freedom)
         {
             Vector3 mirrorToHand = follow.position - transform.position;
             newForward = Vector3.Normalize(Vector3.Cross(mirrorToHand, transform.up));
 
-        } else
+        }
+
+        // free, then rotate to any angle around to the hand
+        else
         {
             newForward = follow.forward;
         }
-        
 
+        // In case the cross product has oppsite direction
         if (Vector3.Dot(newForward, transform.forward) < 0)
         {
             newForward = -newForward;
         }
 
+        // Lock. Make the process visually appealling
+        if (Vector3.Dot(newForward, intialForward)<0)
+        {
+            newForward = transform.forward;
+        }
+
         desiredForward = Vector3.RotateTowards(transform.forward, newForward, 90f, 0f);
 
         return desiredForward;
+    }
+
+    void Start()
+    {
+        intialForward = transform.forward;
     }
 
     void Update()
