@@ -430,3 +430,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grasped: 0
+  freedom: 1

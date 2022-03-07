@@ -5,12 +5,24 @@ using UnityEngine;
 
 public class MirrorGraspable : MyFollowGraspable, IGraspable
 {
+
+    public bool freedom=false;
     private Vector3 desiredForward;
 
     private Vector3 calDesiredForward()
     {
-        Vector3 mirrorToHand = follow.position - transform.position;
-        Vector3 newForward = Vector3.Normalize(Vector3.Cross(mirrorToHand, transform.up));
+        Vector3 newForward;
+
+        if (!freedom)
+        {
+            Vector3 mirrorToHand = follow.position - transform.position;
+            newForward = Vector3.Normalize(Vector3.Cross(mirrorToHand, transform.up));
+
+        } else
+        {
+            newForward = follow.forward;
+        }
+        
 
         if (Vector3.Dot(newForward, transform.forward) < 0)
         {
