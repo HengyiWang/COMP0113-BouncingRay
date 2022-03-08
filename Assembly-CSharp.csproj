@@ -123,7 +123,11 @@
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Single\Spawning\PrefabsMenu.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Single\Spawning\SpawnPrefabControl.cs" />
     <Compile Include="Assets\Scripts\Interaction\CharacterMovement.cs" />
+    <Compile Include="Assets\Scripts\Interaction\GunGraspable.cs" />
+    <Compile Include="Assets\Scripts\Interaction\MirrorGraspable.cs" />
     <Compile Include="Assets\Scripts\Interaction\Move.cs" />
+    <Compile Include="Assets\Scripts\Interaction\MyFollowGraspable.cs" />
+    <Compile Include="Assets\Scripts\Interaction\NetworkedTransform.cs" />
     <Compile Include="Assets\Scripts\Interaction\grasp.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreMirror.cs" />
