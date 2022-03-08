@@ -35,11 +35,13 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
 
     public void UnOwn()
     {
+        // 
         ownership = false;
         foreach(var r in release)
         {
             r();
         }
+        release.Clear();
     }
 
     // Update is called once per frame
