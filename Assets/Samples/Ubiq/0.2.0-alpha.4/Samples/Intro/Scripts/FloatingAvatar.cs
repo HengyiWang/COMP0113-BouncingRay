@@ -98,8 +98,8 @@ namespace Ubiq.Samples
             //UpdateTorso();
 
 
-            torso.position = head.position - head.up * 0.25f;
-            torso.rotation = head.rotation;
+            torso.position = baseOfNeckHint.position;
+            torso.rotation = baseOfNeckHint.rotation;
         }
 
         private void UpdateTorso()
