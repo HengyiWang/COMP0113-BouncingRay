@@ -136,6 +136,7 @@
     <Compile Include="Assets\Scripts\Mechanism\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreMirror.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Shoot.cs" />
+    <Compile Include="Assets\Scripts\UI\Begin.cs" />
     <Compile Include="Assets\Scripts\UI\UIScore.cs" />
   </ItemGroup>
   <ItemGroup>
