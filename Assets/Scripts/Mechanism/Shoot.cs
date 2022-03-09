@@ -37,7 +37,7 @@ public class Shoot : MonoBehaviour
             BeginShoot();
             GetComponent<AudioSource>().Play();
         }
-        if (Input.GetButtonUp("Fire1"))
+        if(Input.GetButtonUp("Fire1"))
         {
             laser.enabled = false;
             GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
@@ -99,13 +99,15 @@ public class Shoot : MonoBehaviour
             {
                 score += 1;
                 hitInfo.collider.gameObject.GetComponent<ScoreMirror>().hitted = true;
+                hitInfo.collider.gameObject.GetComponent<ScoreMirror>().hitPoint = hitInfo.point;
+
             }
 
             if (!calScore)
             {
                 hitInfo.collider.gameObject.GetComponent<ScoreMirror>().hitted = false;
-
             }
+
             //Debug.Log("Hit reflect object");
             Vector3 pos = hitInfo.point;
             Vector3 dir = Vector3.Reflect(direction,hitInfo.normal);
