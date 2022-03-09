@@ -11,7 +11,17 @@ public class GunGraspable : MyFollowGraspable, IGraspable
     public new void Grasp(Hand controller)
     {
         base.Grasp(controller);
+        var ownershipComp = GetComponent<NetworkedOwnership>();
+        if (ownershipComp)
+        {
+            ownershipComp.Own();
+        }
         desiredForward = Vector3.RotateTowards(transform.forward, follow.forward, 180f, 0f);
+    }
+
+    public void rel()
+    {
+        follow = null;
     }
 
     // Update is called once per frame

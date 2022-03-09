@@ -5,7 +5,7 @@ using Ubiq.Messaging;
 
 public class NetworkedTransform : MonoBehaviour, INetworkComponent
 {
-    NetworkContext ctx;
+    private NetworkContext ctx;
 
     struct SynchronizedTransform
     {

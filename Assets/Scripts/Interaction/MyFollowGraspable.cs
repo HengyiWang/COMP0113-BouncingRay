@@ -16,21 +16,13 @@ public class MyFollowGraspable : MonoBehaviour, IGraspable
     public void Grasp(Hand controller)
     {
         grasped = true;
-        var ownershipComp = GetComponent<NetworkedOwnership>();
-        if (ownershipComp)
-        {
-            ownershipComp.Own(rel);
-        }
         var handTransform = controller.transform;
         localGrabPoint = handTransform.InverseTransformPoint(transform.position); //transform.InverseTransformPoint(handTransform.position);
         localGrabRotation = Quaternion.Inverse(handTransform.rotation) * transform.rotation;
         grabHandRotation = handTransform.rotation;
         follow = handTransform;
     }
-    public void rel()
-    {
-        this.follow = null;
-    }
+
     public void Release(Hand controller)
     {
         grasped = false;
