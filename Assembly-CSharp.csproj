@@ -53,6 +53,10 @@
     <UnityVersion>2019.4.34f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\MadeByProfessorOakie\SimpleSonarShader\Example\SimpleSonarShader_ExampleCollision.cs" />
+    <Compile Include="Assets\MadeByProfessorOakie\SimpleSonarShader\Example\SimpleSonarShader_ExampleConfigureChildren.cs" />
+    <Compile Include="Assets\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader_Object.cs" />
+    <Compile Include="Assets\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader_Parent.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Demo\DemoScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorCameraScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorReflectionScript.cs" />
@@ -136,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Prefabs\MagicMirror\Prefab\Readme.txt" />
+    <None Include="Assets\MadeByProfessorOakie\SimpleSonarShader\Readme.txt" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Audio\License.txt" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\MirrorShader.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Intro\Materials\FadeLeft.shader" />
@@ -148,6 +153,7 @@
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Avatars\Kenney\LICENSE.txt" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Readme.txt" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Props\Firework\LICENSE.txt" />
+    <None Include="Assets\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
