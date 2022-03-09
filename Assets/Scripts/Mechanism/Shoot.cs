@@ -37,7 +37,7 @@ public class Shoot : MonoBehaviour
             BeginShoot();
             GetComponent<AudioSource>().Play();
         }
-        else
+        if (Input.GetButtonUp("Fire1"))
         {
             laser.enabled = false;
             GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
