@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Ubiq.XR;
+using Ubiq.Samples;
 
 public class Movement : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Movement : MonoBehaviour
     [NonSerialized]
     public HandController[] handControllers;
 
+    private FloatingAvatar avatar;  // hack to adjust torso
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,7 @@ public class Movement : MonoBehaviour
         }
 
         GetComponent<Rigidbody>().freezeRotation = true; // disable physics rotation
+        avatar = FindObjectOfType<FloatingAvatar>();
     }
 
     // Update is called once per frame
@@ -47,7 +51,6 @@ public class Movement : MonoBehaviour
         adjustAvatarNormalByFloor();
         moveAvatarOnKeyPressed();
         rotateCameraOnRightClick();
-
         moveAvatarInVR();
     }
 
@@ -110,6 +113,10 @@ public class Movement : MonoBehaviour
             {
                 GetComponent<Rigidbody>().AddForce(charNormal * jumpStrength, ForceMode.Impulse);
             }
+
+            // hack to adjust torso
+            avatar.baseOfNeckHint.up = charNormal;
+            avatar.head.forward = charForward;
         }
     }
 
