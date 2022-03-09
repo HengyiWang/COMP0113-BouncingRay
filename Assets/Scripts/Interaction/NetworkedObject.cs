@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class NetworkedObject : NetworkedOwnership, INetworkObject
 {
-    // public NetworkId Id { get; } = NetworkId.Unique();
-    public NetworkId Id { get; } = new NetworkId(100);
+    public NetworkId Id { get; set; }
+    public void Awake()
+    {
+        Id = new NetworkId(transform.position.ToString() +
+                            transform.rotation.ToString());
+    }
 }
