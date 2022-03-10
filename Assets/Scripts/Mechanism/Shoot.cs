@@ -27,7 +27,7 @@ public class Shoot : MonoBehaviour
         ownershipComp = GetComponent<NetworkedOwnership>();
         if (!ownershipComp)
         {
-            Debug.LogError("ownership")
+            Debug.LogError("ownership component is missing!");
         }
     }
 

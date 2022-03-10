@@ -14,11 +14,15 @@ public class GunGraspable : MyFollowGraspable, IGraspable
         var ownershipComp = GetComponent<NetworkedOwnership>();
         if (ownershipComp)
         {
-            ownershipComp.Own();
+            ownershipComp.Own(relinquish);
         }
         desiredForward = Vector3.RotateTowards(transform.forward, follow.forward, 180f, 0f);
         rb.useGravity = false;
         rb.isKinematic = true;
+    }
+    public void relinquish()
+    {
+        this.follow = null; 
     }
 
     public new void Release(Hand controller)
@@ -35,10 +39,6 @@ public class GunGraspable : MyFollowGraspable, IGraspable
         {
             Debug.LogError("No rigidbody in the gun!");
         }
-    }
-    public void rel()
-    {
-        follow = null;
     }
 
     // Update is called once per frame

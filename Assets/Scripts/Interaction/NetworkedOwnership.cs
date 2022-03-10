@@ -14,37 +14,25 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     public bool ownership = false;
     private NetworkContext ctx;
 
-/*    public delegate void Relinquish();
-    private List<Relinquish> release;*/
+    public delegate void Relinquish();
+    private List<Relinquish> release;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        /*release = new List<Relinquish>();*/
+        release = new List<Relinquish>();
         ctx = NetworkScene.Register(this);
     }
 
     // invoked by external events, e.g. when grasped
     // ATTENTION: never invoke Own() in update()!!
-
-    /*    public void Own(Relinquish r)
-        {
-            ownership = true;
-            Debug.Log(r);
-            release.Add(r);
-            ctx.SendJson<bool>(true);
-        }*/
-/*    public void UnOwn()
+    public void Own(Relinquish r)
     {
-        // 
-        ownership = false;
-        foreach (var r in release)
-        {
-            r();
-        }
-        release.Clear();
-    }*/
+        ownership = true;
+        release.Add(r);
+        ctx.SendJson<bool>(true);
+    }
     public void Own()
     {
         ownership = true;
@@ -53,8 +41,12 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     public void UnOwn()
     {
         ownership = false;
+        foreach (var r in release)
+        {
+            r();
+        }
+        release.Clear();
     }
-
 
     // Update is called once per frame
     void Update()
