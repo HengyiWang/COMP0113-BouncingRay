@@ -3,22 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ubiq.Messaging;
 
-public class NetworkedTransform : MonoBehaviour, INetworkComponent, INetworkObject
+public class NetworkedTransform : MonoBehaviour, INetworkComponent
 {
-    public NetworkId Id { get; } = new NetworkId();
-    NetworkContext ctx;
+    private NetworkContext ctx;
 
-    struct SynchronizedTransform
+    struct Message
     {
         public Vector3 position;
         public Quaternion rotation;
         // public Vector3 scale;
     }
 
-    // private ownership;
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
     {
-        var msg = message.FromJson<SynchronizedTransform>();
+        var msg = message.FromJson<Message>();
         transform.position = msg.position;
         transform.rotation = msg.rotation;
     }
@@ -32,10 +30,10 @@ public class NetworkedTransform : MonoBehaviour, INetworkComponent, INetworkObje
     // Update is called once per frame
     void Update()
     {
-        var grasped = GetComponent<MyFollowGraspable>().grasped;
-        if (grasped)
+        var ownershipComp = GetComponent<NetworkedOwnership>();
+        if (ownershipComp && ownershipComp.ownership)
         {
-            SynchronizedTransform message;
+            Message message;
             message.position = transform.position;
             message.rotation = transform.rotation;
             ctx.SendJson(message);

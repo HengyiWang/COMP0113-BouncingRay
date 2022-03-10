@@ -21,8 +21,6 @@ public class MyFollowGraspable : MonoBehaviour, IGraspable
         localGrabRotation = Quaternion.Inverse(handTransform.rotation) * transform.rotation;
         grabHandRotation = handTransform.rotation;
         follow = handTransform;
-
-
     }
 
     public void Release(Hand controller)

@@ -17,6 +17,10 @@ GameObject:
   - component: {fileID: 488993087}
   - component: {fileID: 2292495416960691321}
   - component: {fileID: 194913757}
+  - component: {fileID: 194913758}
+  - component: {fileID: 194913759}
+  - component: {fileID: 194913760}
+  - component: {fileID: 194913761}
   m_Layer: 0
   m_Name: Pistol27
   m_TagString: Untagged
@@ -223,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 100
+  clicked: 0
   score: 0
 --- !u!114 &2292495416960691321
 MonoBehaviour:
@@ -237,7 +242,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grasped: 0
---- !u!120 &194913757
+--- !u!114 &194913757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac20dd3df02a44b46b5b41a47d6f790b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &194913758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0a3bee4b92a354f8bf08dea16e699a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownership: 0
+--- !u!114 &194913759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1866d35f99ba65458f03a2cd7093898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &194913760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d586b862979bdb346bf0c52485778201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!120 &194913761
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

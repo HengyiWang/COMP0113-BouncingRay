@@ -11,6 +11,20 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
 
     private Vector3 intialForward;
 
+    public new void Grasp(Hand controller)
+    {
+        base.Grasp(controller);
+        var ownershipComp = GetComponent<NetworkedOwnership>();
+        if (ownershipComp)
+        {
+            ownershipComp.Own(relinquish);
+        }
+    }
+
+    public void relinquish()
+    {
+        this.follow = null;
+    }
     private Vector3 calDesiredForward()
     {
         Vector3 newForward;
@@ -45,6 +59,8 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
 
         return desiredForward;
     }
+
+    
 
     void Start()
     {

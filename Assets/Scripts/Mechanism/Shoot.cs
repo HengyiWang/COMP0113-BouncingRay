@@ -8,7 +8,8 @@ public class Shoot : MonoBehaviour
     public float range = 100f;
 
     private bool grasped;
-
+    public bool clicked = false;
+    private NetworkedOwnership ownershipComp;
     public int score = 0;
 
     float timer;
@@ -23,16 +24,25 @@ public class Shoot : MonoBehaviour
         //shootableMask = LayerMask.GetMask("Shootable");
         // LineRenderer for the laser
         laser = GetComponent<LineRenderer>();
+        ownershipComp = GetComponent<NetworkedOwnership>();
+        if (!ownershipComp)
+        {
+            Debug.LogError("ownership component is missing!");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (ownershipComp && ownershipComp.ownership)
+        {
+            clicked = Input.GetButton("Fire1");
+        }
         //GameObject.Find("Sci_fi_Pistol1").
         grasped = GetComponent<MyFollowGraspable>().grasped;
         // Update time for one frame
         timer += Time.deltaTime;
-        if (Input.GetButton("Fire1") && grasped)
+        if (grasped && clicked)
         {
             BeginShoot();
             GetComponent<AudioSource>().Play();
