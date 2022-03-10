@@ -16,6 +16,7 @@ Shader "MadeByProfessorOakie/SimpleSonarShader" {
 	}
 		SubShader{
 		Tags{ "RenderType" = "Opaque" }
+		Pass{Cull Off}
 		LOD 200
 
 		CGPROGRAM
