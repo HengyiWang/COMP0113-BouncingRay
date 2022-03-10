@@ -30,6 +30,7 @@ public class NetworkedGunStates : MonoBehaviour, INetworkComponent
     // Start is called before the first frame update
     void Start()
     {
+        ctx = NetworkScene.Register(this);
         ownershipComp = GetComponent<NetworkedOwnership>();
         followComp = GetComponent<MyFollowGraspable>();
         shootComp = GetComponent<Shoot>();
