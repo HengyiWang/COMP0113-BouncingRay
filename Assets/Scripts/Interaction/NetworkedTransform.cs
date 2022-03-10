@@ -7,7 +7,7 @@ public class NetworkedTransform : MonoBehaviour, INetworkComponent
 {
     private NetworkContext ctx;
 
-    struct SynchronizedTransform
+    struct Message
     {
         public Vector3 position;
         public Quaternion rotation;
@@ -16,7 +16,7 @@ public class NetworkedTransform : MonoBehaviour, INetworkComponent
 
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
     {
-        var msg = message.FromJson<SynchronizedTransform>();
+        var msg = message.FromJson<Message>();
         transform.position = msg.position;
         transform.rotation = msg.rotation;
     }
@@ -33,7 +33,7 @@ public class NetworkedTransform : MonoBehaviour, INetworkComponent
         var ownershipComp = GetComponent<NetworkedOwnership>();
         if (ownershipComp && ownershipComp.ownership)
         {
-            SynchronizedTransform message;
+            Message message;
             message.position = transform.position;
             message.rotation = transform.rotation;
             ctx.SendJson(message);

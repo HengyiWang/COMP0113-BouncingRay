@@ -7,7 +7,7 @@ public class GunGraspable : MyFollowGraspable, IGraspable
 {
     private Vector3 desiredForward;
     // Start is called before the first frame update
-
+    private Rigidbody rb;
     public new void Grasp(Hand controller)
     {
         base.Grasp(controller);
@@ -17,8 +17,25 @@ public class GunGraspable : MyFollowGraspable, IGraspable
             ownershipComp.Own();
         }
         desiredForward = Vector3.RotateTowards(transform.forward, follow.forward, 180f, 0f);
+        rb.useGravity = false;
+        rb.isKinematic = true;
     }
 
+    public new void Release(Hand controller)
+    {
+        base.Release(controller);
+        rb.useGravity = true;
+        rb.isKinematic = false;
+    }
+
+    public void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        if (!rb)
+        {
+            Debug.LogError("No rigidbody in the gun!");
+        }
+    }
     public void rel()
     {
         follow = null;
