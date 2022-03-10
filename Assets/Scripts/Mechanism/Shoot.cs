@@ -8,6 +8,7 @@ public class Shoot : MonoBehaviour
     public float range = 100f;
 
     private bool grasped;
+    public bool clicked = false;
 
     public int score = 0;
 
@@ -28,11 +29,12 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        clicked = Input.GetButton("Fire1");
         //GameObject.Find("Sci_fi_Pistol1").
         grasped = GetComponent<MyFollowGraspable>().grasped;
         // Update time for one frame
         timer += Time.deltaTime;
-        if (Input.GetButton("Fire1") && grasped)
+        if (grasped && clicked)
         {
             BeginShoot();
             GetComponent<AudioSource>().Play();
