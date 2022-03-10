@@ -47,9 +47,10 @@ public class Shoot : MonoBehaviour
             BeginShoot();
             GetComponent<AudioSource>().Play();
         }
-        if(Input.GetButtonUp("Fire1"))
+        else
         {
             laser.enabled = false;
+            laserIndices = new List<Vector3>();
             GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
         }
     }
