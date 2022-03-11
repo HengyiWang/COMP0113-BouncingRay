@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -288,11 +288,12 @@ MonoBehaviour:
   gravity: 9.8
   maxRaycastDistance: 100
   walkableLayerNumber: 8
-  adjustingHeight: 0.5
-  normalAdjustLerpSpeed: 10
+  adjustingHeight: 0.75
+  normalAdjustLerpSpeed: 5
   jumpStrength: 10
   moveSpeed: 5
   cameraRotateSpeed: 3
+  VR: 1
 --- !u!135 &215258457
 SphereCollider:
   m_ObjectHideFlags: 0
