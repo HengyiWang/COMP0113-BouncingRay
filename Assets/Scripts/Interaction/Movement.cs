@@ -73,7 +73,6 @@ public class Movement : MonoBehaviour
                 }
             }
             else if (item.Left)
-                if (item.Left)
             {
                 var dir = item.Joystick.normalized;
                 transform.Translate(new Vector3(dir.x, 0, dir.y) * moveSpeed * Time.deltaTime);
@@ -115,10 +114,6 @@ public class Movement : MonoBehaviour
             {
                 GetComponent<Rigidbody>().AddForce(charNormal * jumpStrength, ForceMode.Impulse);
             }
-
-            // hack to adjust torso
-            //avatar.baseOfNeckHint.up = charNormal;
-            //avatar.head.forward = charForward;
         }
     }
 
