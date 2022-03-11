@@ -128,9 +128,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -138,8 +136,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.34285927
+        time: 0.029556274
+        value: 0.062372208
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -201,6 +199,7 @@ MonoBehaviour:
   range: 100
   clicked: 0
   score: 0
+  muzzlePosition: {x: 0, y: 4.5, z: 12.5}
 --- !u!54 &356584055
 Rigidbody:
   m_ObjectHideFlags: 0

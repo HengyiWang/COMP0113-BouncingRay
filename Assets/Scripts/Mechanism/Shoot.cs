@@ -11,7 +11,7 @@ public class Shoot : MonoBehaviour
     public bool clicked = false;
     private NetworkedOwnership ownershipComp;
     public int score = 0;
-
+    public Vector3 muzzlePosition = new Vector3(0.0f, 0.0f, 0.0f);
     float timer;
     float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
     //int shootableMask;
@@ -51,6 +51,7 @@ public class Shoot : MonoBehaviour
         {
             laser.enabled = false;
             laserIndices = new List<Vector3>();
+            updateLaser();
             GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
         }
     }
@@ -60,12 +61,13 @@ public class Shoot : MonoBehaviour
         laser.enabled = true;
         laserIndices = new List<Vector3>();
         //laser.SetPosition(0,transform.position);
-        CastRay(transform.position, transform.forward, laser, true);
+        Vector3 startingPos = transform.TransformPoint(muzzlePosition);
+        CastRay(startingPos, transform.forward, laser, true);
         GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
         score = 0;
 
         laserIndices = new List<Vector3>();
-        CastRay(transform.position, transform.forward, laser, false);
+        CastRay(startingPos, transform.forward, laser, false);
     }
 
 
