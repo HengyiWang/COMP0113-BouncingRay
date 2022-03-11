@@ -114,7 +114,7 @@ namespace Ubiq.Samples
 
             int walkableMask = 1 << walkableLayerNumber;
 
-            Ray ray = new Ray(transform.position, -charNormal); // cast ray downwards
+            Ray ray = new Ray(baseOfNeckHint.position, -charNormal); // cast ray downwards
             if (Physics.Raycast(ray, out hit, maxRaycastDistance, walkableMask))
             { // use it to update myNormal and isGrounded
                 adjust = hit.distance <= adjustingHeight;
@@ -129,8 +129,12 @@ namespace Ubiq.Samples
 
             charNormal = Vector3.Lerp(charNormal, currGroundNormal, normalAdjustLerpSpeed * Time.deltaTime);
 
+            Debug.Log(adjust);
+
             if (adjust)
             {
+                Debug.Log("torso.position: " + torso.position.ToString());
+                Debug.Log("charNormal: " + charNormal.ToString());
                 torso.position = baseOfNeckHint.position;
                 torso.up = charNormal;
             }
