@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     public float gravity = 9.8f; // gravity acceleration
     public float maxRaycastDistance = 100.0f;  // max distance to ground
     public int walkableLayerNumber = 8;
-    public float adjustingHeight = 0.5f;
+    public float adjustingHeight = 0.75f;
     public float normalAdjustLerpSpeed = 5;
     public float jumpStrength = 10;
     public float moveSpeed = 5.0f;
@@ -91,15 +91,21 @@ public class Movement : MonoBehaviour
         Ray ray = new Ray(transform.position, -charNormal); // cast ray downwards
         if (Physics.Raycast(ray, out hit, maxRaycastDistance, walkableMask))
         { // use it to update myNormal and isGrounded
+
+            Debug.Log("hit:" + hit.distance.ToString() + ", " + adjustingHeight.ToString());
             adjust = hit.distance <= adjustingHeight;
             currGroundNormal = hit.normal;
         }
         else
         {
+
+            
             adjust = false;
             // assume usual ground normal to avoid "falling forever"
             currGroundNormal = Vector3.up;
         }
+
+        Debug.Log(adjust);
 
         if (adjust)
         {
@@ -112,6 +118,7 @@ public class Movement : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
+                Debug.Log(charNormal * jumpStrength);
                 GetComponent<Rigidbody>().AddForce(charNormal * jumpStrength, ForceMode.Impulse);
             }
         }
