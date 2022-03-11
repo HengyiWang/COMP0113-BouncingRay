@@ -109,7 +109,6 @@ namespace Ubiq.Samples
 
             int walkableLayerNumber = 8;
             int maxRaycastDistance = 100;
-            float adjustingHeight = 0.5f;
             float normalAdjustLerpSpeed = 3f;
 
             int walkableMask = 1 << walkableLayerNumber;
@@ -117,27 +116,20 @@ namespace Ubiq.Samples
             Ray ray = new Ray(baseOfNeckHint.position, -charNormal); // cast ray downwards
             if (Physics.Raycast(ray, out hit, maxRaycastDistance, walkableMask))
             { // use it to update myNormal and isGrounded
-                adjust = hit.distance <= adjustingHeight;
                 currGroundNormal = hit.normal;
             }
             else
             {
-                adjust = false;
                 // assume usual ground normal to avoid "falling forever"
                 currGroundNormal = Vector3.up;
             }
 
             charNormal = Vector3.Lerp(charNormal, currGroundNormal, normalAdjustLerpSpeed * Time.deltaTime);
 
-            Debug.Log(adjust);
-
-            if (adjust)
-            {
-                Debug.Log("torso.position: " + torso.position.ToString());
-                Debug.Log("charNormal: " + charNormal.ToString());
-                torso.position = baseOfNeckHint.position;
-                torso.up = charNormal;
-            }
+            Debug.Log("torso.position: " + torso.position.ToString());
+            Debug.Log("charNormal: " + charNormal.ToString());
+            torso.position = baseOfNeckHint.position;
+            torso.up = charNormal;
         }
 
         private void UpdateTorso()
