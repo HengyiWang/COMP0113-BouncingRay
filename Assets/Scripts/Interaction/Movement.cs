@@ -52,8 +52,8 @@ public class Movement : MonoBehaviour
         moveAvatarInVR();
 
         // hack to update avartar here
-        avatar.torso.position = avatar.baseOfNeckHint.position;
-        avatar.torso.up = charNormal;
+        //avatar.torso.position = avatar.baseOfNeckHint.position;
+        //avatar.torso.up = charNormal;
     }
 
     void moveAvatarInVR()
