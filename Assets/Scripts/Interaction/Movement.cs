@@ -16,29 +16,30 @@ public class Movement : MonoBehaviour
     public float jumpStrength = 10;
     public float moveSpeed = 5.0f;
     public float cameraRotateSpeed = 3f;
+    public bool VR = true;
 
     private Vector3 charNormal;
 
-    private bool VR = false;
     [NonSerialized]
     public HandController[] handControllers;
 
     private FloatingAvatar avatar;  // hack to adjust torso
-
+    private Transform cameraOffsetTransform;
 
     // Start is called before the first frame update
     void Start()
     {
         charNormal = transform.up; // assumed character initial normal
+        GetComponent<Rigidbody>().freezeRotation = true; // disable physics rotation
+        avatar = FindObjectOfType<FloatingAvatar>();
 
-        VR = UnityEngine.XR.XRSettings.isDeviceActive;
+        cameraOffsetTransform = transform.Find("Camera Offset");
+
+        VR = VR && UnityEngine.XR.XRSettings.isDeviceActive;
         if (VR)
         {
             handControllers = GetComponentsInChildren<HandController>();
         }
-
-        GetComponent<Rigidbody>().freezeRotation = true; // disable physics rotation
-        avatar = FindObjectOfType<FloatingAvatar>();
     }
 
     // Update is called once per frame
@@ -49,6 +50,10 @@ public class Movement : MonoBehaviour
         moveAvatarOnKeyPressed();
         rotateCameraOnRightClick();
         moveAvatarInVR();
+
+        // hack to update avartar here
+        avatar.torso.position = avatar.baseOfNeckHint.position;
+        avatar.torso.up = charNormal;
     }
 
     void moveAvatarInVR()
@@ -60,15 +65,15 @@ public class Movement : MonoBehaviour
 
         foreach (var item in handControllers)
         {
-            //if (item.Right)
-            //{
-            //    if (item.JoystickSwipe.Trigger)
-            //    {
-            //        transform.RotateAround(transform.position, Vector3.up, 45f * Mathf.Sign(item.JoystickSwipe.Value));
-            //    }
-            //}
-            //else if (item.Left)
-            if (item.Left)
+            if (item.Right)
+            {
+                if (item.JoystickSwipe.Value != 0)
+                {
+                    transform.RotateAround(transform.position, transform.up, cameraRotateSpeed * Mathf.Sign(item.JoystickSwipe.Value));
+                }
+            }
+            else if (item.Left)
+                if (item.Left)
             {
                 var dir = item.Joystick.normalized;
                 transform.Translate(new Vector3(dir.x, 0, dir.y) * moveSpeed * Time.deltaTime);
@@ -160,6 +165,7 @@ public class Movement : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             transform.Rotate(0, Input.GetAxis("Mouse X") * cameraRotateSpeed, 0);
+            cameraOffsetTransform.Rotate(-Input.GetAxis("Mouse Y") * cameraRotateSpeed, 0, 0);
         }
 
     }
