@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     public float maxRaycastDistance = 100.0f;  // max distance to ground
     public int walkableLayerNumber = 8;
     public float adjustingHeight = 0.5f;
-    public float normalAdjustLerpSpeed = 10f;
+    public float normalAdjustLerpSpeed = 5;
     public float jumpStrength = 10;
     public float moveSpeed = 5.0f;
     public float cameraRotateSpeed = 3f;
