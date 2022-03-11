@@ -104,7 +104,6 @@ namespace Ubiq.Samples
             //torso.rotation = baseOfNeckHint.rotation;
 
             RaycastHit hit;
-            bool adjust;  // we do not adjust if the play is jumping
             Vector3 currGroundNormal;
 
             int walkableLayerNumber = 8;
