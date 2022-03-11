@@ -93,11 +93,47 @@ namespace Ubiq.Samples
             rightHandRenderer.material = headRenderer.material;
         }
 
+
+        private Vector3 charNormal;
+
         private void Update()
         {
             //UpdateTorso();
+
             //torso.position = baseOfNeckHint.position;
             //torso.rotation = baseOfNeckHint.rotation;
+
+            RaycastHit hit;
+            bool adjust;  // we do not adjust if the play is jumping
+            Vector3 currGroundNormal;
+
+            int walkableLayerNumber = 8;
+            int maxRaycastDistance = 100;
+            float adjustingHeight = 0.5f;
+            float normalAdjustLerpSpeed = 3f;
+
+            int walkableMask = 1 << walkableLayerNumber;
+
+            Ray ray = new Ray(transform.position, -charNormal); // cast ray downwards
+            if (Physics.Raycast(ray, out hit, maxRaycastDistance, walkableMask))
+            { // use it to update myNormal and isGrounded
+                adjust = hit.distance <= adjustingHeight;
+                currGroundNormal = hit.normal;
+            }
+            else
+            {
+                adjust = false;
+                // assume usual ground normal to avoid "falling forever"
+                currGroundNormal = Vector3.up;
+            }
+
+            charNormal = Vector3.Lerp(charNormal, currGroundNormal, normalAdjustLerpSpeed * Time.deltaTime);
+
+            if (adjust)
+            {
+                torso.position = baseOfNeckHint.position;
+                torso.up = charNormal;
+            }
         }
 
         private void UpdateTorso()
