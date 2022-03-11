@@ -108,6 +108,7 @@ namespace Ubiq.Samples
             Vector3 currGroundNormal;
 
             int walkableLayerNumber = 8;
+
             int maxRaycastDistance = 100;
             float normalAdjustLerpSpeed = 3f;
 
@@ -126,8 +127,6 @@ namespace Ubiq.Samples
 
             charNormal = Vector3.Lerp(charNormal, currGroundNormal, normalAdjustLerpSpeed * Time.deltaTime);
 
-            Debug.Log("torso.position: " + torso.position.ToString());
-            Debug.Log("charNormal: " + charNormal.ToString());
             torso.position = baseOfNeckHint.position;
             torso.up = charNormal;
         }
