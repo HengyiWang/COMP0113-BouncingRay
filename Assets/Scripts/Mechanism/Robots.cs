@@ -7,31 +7,21 @@ public class Robots : MonoBehaviour
     Animator m_Animator;
     public bool isHitted;
     public bool energy;
-    private int score;
-    private int total;
     // Start is called before the first frame update
     void Start()
     {
         m_Animator = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
         m_Animator.SetBool("IsHitted", isHitted);
-        score = GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score;
-        total = GameObject.Find("ScoreBox").GetComponent<ScoreManager>().total;
-        if (score == total && total > 0)
-        {
-            energy = true;
-        }
         
         if (isHitted && energy)
         {
             m_Animator.SetBool("Energy", energy);
 
         }
-
     }
 }

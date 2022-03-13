@@ -53,15 +53,11 @@
     <UnityVersion>2019.4.34f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\MadeByProfessorOakie\SimpleSonarShader\Example\SimpleSonarShader_ExampleCollision.cs" />
-    <Compile Include="Assets\MadeByProfessorOakie\SimpleSonarShader\Example\SimpleSonarShader_ExampleConfigureChildren.cs" />
-    <Compile Include="Assets\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader_Object.cs" />
-    <Compile Include="Assets\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader_Parent.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Demo\DemoScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorCameraScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorReflectionScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorScript.cs" />
-    <Compile Include="Assets\RobotSphere\Assets\Scripts\RobotFreeAnim.cs" />
+    <Compile Include="Assets\Prefabs\RobotSphere\Assets\Scripts\RobotFreeAnim.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Applications\Boids\BoidState.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Applications\Boids\Boids.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Applications\Boids\BoidsManager.cs" />
@@ -145,46 +141,50 @@
     <Compile Include="Assets\Scripts\Mechanism\Shoot.cs" />
     <Compile Include="Assets\Scripts\UI\Begin.cs" />
     <Compile Include="Assets\Scripts\UI\UIScore.cs" />
-    <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
-    <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
-    <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
-    <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
-    <Compile Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
+    <Compile Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\Example\SimpleSonarShader_ExampleCollision.cs" />
+    <Compile Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\Example\SimpleSonarShader_ExampleConfigureChildren.cs" />
+    <Compile Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader_Object.cs" />
+    <Compile Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader_Parent.cs" />
+    <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Scripts\U10PS_DissolveOverTime.cs" />
+    <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Scripts\U10PS_ExampleReview.cs" />
+    <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
+    <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
+    <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Grass Sway.shader" />
-    <None Include="Assets\GhostlyHand\GhostlyHand.shader" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Blur.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Grass Sway.shader" />
+    <None Include="Assets\Shaders\GhostlyHand\GhostlyHand.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Blur.shader" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\Readme.txt" />
-    <None Include="Assets\MadeByProfessorOakie\SimpleSonarShader\Readme.txt" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.compute" />
-    <None Include="Assets\GhostlyHand\GhostlyHandStaticGradient.shader" />
+    <None Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\Readme.txt" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.compute" />
+    <None Include="Assets\Shaders\GhostlyHand\GhostlyHandStaticGradient.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Audio\License.txt" />
-    <None Include="Assets\Sets - Gems\Shaders\Gem.shader" />
+    <None Include="Assets\Prefabs\Sets - Gems\Shaders\Gem.shader" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\MirrorShader.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Intro\Materials\FadeLeft.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Environments\Apartment\Sources.txt" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\MirrorShaderBumpMap.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Avatars\Floating\LICENSE.txt" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Depth Mask Edge Detection.shader" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Ocean.shader" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Dissolve.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Depth Mask Edge Detection.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Ocean.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Dissolve.shader" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\MirrorShaderOld.shader" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plasma.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Plasma.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Environments\Nature Pack\LICENSE.txt" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Outline.shader" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus Line.shader" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Snow.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Outline.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus Line.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Snow.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Avatars\Kenney\Changelog.txt" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Lava3D.shader" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Force Field.shader" />
-    <None Include="Assets\GhostlyHand\ReadMe.txt" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Lava3D.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Force Field.shader" />
+    <None Include="Assets\Shaders\GhostlyHand\ReadMe.txt" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Avatars\Kenney\LICENSE.txt" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Readme.txt" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Props\Firework\LICENSE.txt" />
-    <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Simple Sine Wave.shader" />
-    <None Include="Assets\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader.shader" />
+    <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Simple Sine Wave.shader" />
+    <None Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

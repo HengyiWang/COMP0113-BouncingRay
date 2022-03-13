@@ -6,9 +6,7 @@ using Ubiq.Samples;
 public class Shoot : MonoBehaviour
 {
     public float range = 100f;
-
-    public int totalScore=1;
-
+    private int number_of_all_gems;
     private bool grasped;
     public bool clicked = false;
     private NetworkedOwnership ownershipComp;
@@ -16,14 +14,13 @@ public class Shoot : MonoBehaviour
     public Vector3 muzzlePosition = new Vector3(0.0f, 0.0f, 0.0f);
     float timer;
     float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
-    //int shootableMask;
     LineRenderer laser;
     List<Vector3> laserIndices;
 
     // Start is called before the first frame update
     void Start()
     {
-        //shootableMask = LayerMask.GetMask("Shootable");
+
         // LineRenderer for the laser
         laser = GetComponent<LineRenderer>();
         ownershipComp = GetComponent<NetworkedOwnership>();
@@ -31,6 +28,8 @@ public class Shoot : MonoBehaviour
         {
             Debug.LogError("ownership component is missing!");
         }
+
+        number_of_all_gems = GameObject.Find("All_Gem").transform.childCount;
     }
 
     // Update is called once per frame
@@ -40,7 +39,6 @@ public class Shoot : MonoBehaviour
         {
             clicked = Input.GetButton("Fire1");
         }
-        //GameObject.Find("Sci_fi_Pistol1").
         grasped = GetComponent<MyFollowGraspable>().grasped;
         // Update time for one frame
         timer += Time.deltaTime;
@@ -54,12 +52,11 @@ public class Shoot : MonoBehaviour
             laser.enabled = false;
             laserIndices = new List<Vector3>();
             updateLaser();
-            //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
-            //GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
         }
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1"))//when release mouse left button
         {
             GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
+            GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
         }
     }
     void BeginShoot()
@@ -144,7 +141,7 @@ public class Shoot : MonoBehaviour
         {
             hitInfo.collider.gameObject.GetComponent<Robots>().isHitted = true;
 
-            if (score == totalScore)
+            if (score == number_of_all_gems && number_of_all_gems > 0)
             {
                 hitInfo.collider.gameObject.GetComponent<Robots>().energy = true;
             }

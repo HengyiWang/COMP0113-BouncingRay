@@ -18,31 +18,29 @@ public class ScoreMirror : MonoBehaviour
     
     void Update()
     {
+        // Sonar Shader Effect
         SimpleSonarShader_Parent parent = GetComponentInParent<SimpleSonarShader_Parent>();
-        if (hitPoint != new Vector3(0,0,0))
+        if (parent)
         {
-            if (hitPoint != lastHitPoint)
+            if (hitPoint != new Vector3(0, 0, 0))
             {
-                parent.StartSonarRing(hitPoint, 10.0f);
-            }
-            else
-            {
-                ftime += Time.deltaTime;
-                if (ftime >= 1f)
+                if (hitPoint != lastHitPoint)
                 {
                     parent.StartSonarRing(hitPoint, 10.0f);
-                    ftime = 0f;
                 }
-            }
+                else
+                {
+                    ftime += Time.deltaTime;
+                    if (ftime >= 1f)
+                    {
+                        parent.StartSonarRing(hitPoint, 10.0f);
+                        ftime = 0f;
+                    }
+                }
 
+            }
         }
-        //while (hitPoint != new Vector3(0, 0, 0))
-        //{
-        //    if(hitPoint != lastHitPoint)
-        //    {
-        //        parent.StartSonarRing(hitPoint, 10.0f);
-        //    }
-        //}
+        
         lastHitPoint = hitPoint;
         hitPoint = new Vector3(0, 0, 0);
     }

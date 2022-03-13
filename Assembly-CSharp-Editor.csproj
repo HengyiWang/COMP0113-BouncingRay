@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\Editor\MagicMirrorEditor.cs" />
-    <Compile Include="Assets\RobotSphere\Assets\Scripts\Editor\RobotFreeAnimEditor.cs" />
+    <Compile Include="Assets\Prefabs\RobotSphere\Assets\Scripts\Editor\RobotFreeAnimEditor.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Intro\Scripts\Editor\AvatarMenuControllerEditor.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Intro\Scripts\Editor\PrefabCatalogueEditor.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Intro\Scripts\Editor\RoomSceneManagerEditor.cs" />
