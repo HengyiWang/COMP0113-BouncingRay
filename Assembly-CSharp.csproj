@@ -61,6 +61,7 @@
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorCameraScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorReflectionScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorScript.cs" />
+    <Compile Include="Assets\RobotSphere\Assets\Scripts\RobotFreeAnim.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Applications\Boids\BoidState.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Applications\Boids\Boids.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Applications\Boids\BoidsManager.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Assets\Scripts\Interaction\NetworkedSpawnableObject.cs" />
     <Compile Include="Assets\Scripts\Interaction\NetworkedTransform.cs" />
     <Compile Include="Assets\Scripts\Interaction\grasp.cs" />
+    <Compile Include="Assets\Scripts\Mechanism\Robots.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreMirror.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Shoot.cs" />
@@ -152,11 +154,14 @@
   <ItemGroup>
     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Grass Sway.shader" />
+    <None Include="Assets\GhostlyHand\GhostlyHand.shader" />
     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Blur.shader" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\Readme.txt" />
     <None Include="Assets\MadeByProfessorOakie\SimpleSonarShader\Readme.txt" />
     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.compute" />
+    <None Include="Assets\GhostlyHand\GhostlyHandStaticGradient.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Audio\License.txt" />
+    <None Include="Assets\Sets - Gems\Shaders\Gem.shader" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\MirrorShader.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Intro\Materials\FadeLeft.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Environments\Apartment\Sources.txt" />
@@ -174,6 +179,7 @@
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Avatars\Kenney\Changelog.txt" />
     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Lava3D.shader" />
     <None Include="Assets\Ultimate 10 Plus Shaders\Shaders\Force Field.shader" />
+    <None Include="Assets\GhostlyHand\ReadMe.txt" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Avatars\Kenney\LICENSE.txt" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Readme.txt" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Props\Firework\LICENSE.txt" />

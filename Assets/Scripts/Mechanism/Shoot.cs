@@ -54,8 +54,12 @@ public class Shoot : MonoBehaviour
             laser.enabled = false;
             laserIndices = new List<Vector3>();
             updateLaser();
-            GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
+            //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
             //GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
         }
     }
     void BeginShoot()
