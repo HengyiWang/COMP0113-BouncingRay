@@ -7,6 +7,8 @@ public class Shoot : MonoBehaviour
 {
     public float range = 100f;
 
+    public int totalScore=1;
+
     private bool grasped;
     public bool clicked = false;
     private NetworkedOwnership ownershipComp;
@@ -53,6 +55,7 @@ public class Shoot : MonoBehaviour
             laserIndices = new List<Vector3>();
             updateLaser();
             GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
+            //GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
         }
     }
     void BeginShoot()
@@ -130,6 +133,18 @@ public class Shoot : MonoBehaviour
         {
             laserIndices.Add(hitInfo.point);
             updateLaser();
+        }
+
+        // Code for robot
+        if (hitInfo.collider.gameObject.tag == "Robot")
+        {
+            hitInfo.collider.gameObject.GetComponent<Robots>().isHitted = true;
+
+            if (score == totalScore)
+            {
+                hitInfo.collider.gameObject.GetComponent<Robots>().energy = true;
+            }
+
         }
     }
 }
