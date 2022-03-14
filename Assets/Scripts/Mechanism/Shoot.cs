@@ -156,6 +156,7 @@ public class Shoot : MonoBehaviour
             if (score == number_of_all_gems && number_of_all_gems > 0)
             {
                 hitInfo.collider.gameObject.GetComponent<Robots>().energy = true;
+    
             }
 
         }

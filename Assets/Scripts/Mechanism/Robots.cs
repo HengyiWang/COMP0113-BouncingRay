@@ -7,6 +7,7 @@ public class Robots : MonoBehaviour
     Animator m_Animator;
     public bool isHitted;
     public bool energy;
+    public bool played;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +19,21 @@ public class Robots : MonoBehaviour
     {
         m_Animator.SetBool("IsHitted", isHitted);
         
-        if (isHitted && energy)
+        if (energy)
         {
+            
             m_Animator.SetBool("Energy", energy);
+            playAudioSource();
 
+        }
+    }
+
+    void playAudioSource()
+    {
+        if (!played)
+        {
+            GetComponent<AudioSource>().Play();
+            played = true;
         }
     }
 }
