@@ -57,6 +57,17 @@ public class Shoot : MonoBehaviour
         {
             GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
             GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
+
+            clearMirrorSoundsTag();
+        }
+    }
+    void clearMirrorSoundsTag()
+    {
+        var gemObjects = GameObject.FindGameObjectsWithTag("ReflectObject");
+
+        foreach (var gemObject in gemObjects)
+        {
+            gemObject.GetComponent<ScoreMirror>().played = false;
         }
     }
     void BeginShoot()
@@ -112,6 +123,7 @@ public class Shoot : MonoBehaviour
     {
         if (hitInfo.collider.gameObject.tag == "ReflectObject")
         {
+            hitInfo.collider.gameObject.GetComponent<ScoreMirror>().playAudioSource();
             if (!hitInfo.collider.gameObject.GetComponent<ScoreMirror>().hitted && calScore)
             {
                 score += 1;
