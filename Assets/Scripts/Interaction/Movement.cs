@@ -32,7 +32,6 @@ public class Movement : MonoBehaviour
     {
         charNormal = transform.up; // assumed character initial normal
         GetComponent<Rigidbody>().freezeRotation = true; // disable physics rotation
-        avatar = FindObjectOfType<FloatingAvatar>();
 
         cameraOffsetTransform = transform.Find("Camera Offset");
 
