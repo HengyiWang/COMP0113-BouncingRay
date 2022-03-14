@@ -16,14 +16,15 @@ public class Movement : MonoBehaviour
     public float jumpStrength = 10;
     public float moveSpeed = 5.0f;
     public float cameraRotateSpeed = 3f;
+    public int maxVerticalViewOffsetAngle = 45;
     public bool VR = true;
 
     private Vector3 charNormal;
+    private Vector3 charForward;
 
     [NonSerialized]
     public HandController[] handControllers;
 
-    private FloatingAvatar avatar;  // hack to adjust torso
     private Transform cameraOffsetTransform;
 
     // Start is called before the first frame update
@@ -92,26 +93,21 @@ public class Movement : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxRaycastDistance, walkableMask))
         { // use it to update myNormal and isGrounded
 
-            Debug.Log("hit:" + hit.distance.ToString() + ", " + adjustingHeight.ToString());
             adjust = hit.distance <= adjustingHeight;
             currGroundNormal = hit.normal;
         }
         else
         {
-
-            
             adjust = false;
             // assume usual ground normal to avoid "falling forever"
             currGroundNormal = Vector3.up;
         }
 
-        Debug.Log(adjust);
-
         if (adjust)
         {
             charNormal = Vector3.Lerp(charNormal, currGroundNormal, normalAdjustLerpSpeed * Time.deltaTime);
             // find forward direction with new myNormal:
-            Vector3 charForward = Vector3.Cross(transform.right, charNormal);
+            charForward = Vector3.Cross(transform.right, charNormal);
             // align character to the new myNormal while keeping the forward direction:
             Quaternion targetRot = Quaternion.LookRotation(charForward, charNormal);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, normalAdjustLerpSpeed * Time.deltaTime);
@@ -167,7 +163,11 @@ public class Movement : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             transform.Rotate(0, Input.GetAxis("Mouse X") * cameraRotateSpeed, 0);
-            cameraOffsetTransform.Rotate(-Input.GetAxis("Mouse Y") * cameraRotateSpeed, 0, 0);
+            float angle = Vector3.SignedAngle(charForward, cameraOffsetTransform.forward, transform.right);
+            if (Math.Abs(angle) < maxVerticalViewOffsetAngle || Math.Sign(angle) == Math.Sign(Input.GetAxis("Mouse Y")))
+            {
+                cameraOffsetTransform.Rotate(-Input.GetAxis("Mouse Y") * cameraRotateSpeed, 0, 0);
+            }
         }
 
     }

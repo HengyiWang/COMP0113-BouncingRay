@@ -140,7 +140,10 @@
     <Compile Include="Assets\Scripts\Mechanism\ScoreMirror.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Shoot.cs" />
     <Compile Include="Assets\Scripts\UI\Begin.cs" />
+    <Compile Include="Assets\Scripts\UI\NavMeshModifier.cs" />
+    <Compile Include="Assets\Scripts\UI\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\Scripts\UI\UIScore.cs" />
+    <Compile Include="Assets\Scripts\UI\WalkHint.cs" />
     <Compile Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\Example\SimpleSonarShader_ExampleCollision.cs" />
     <Compile Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\Example\SimpleSonarShader_ExampleConfigureChildren.cs" />
     <Compile Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\SimpleSonarShader_Object.cs" />
