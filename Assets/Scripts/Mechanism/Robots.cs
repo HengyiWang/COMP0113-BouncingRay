@@ -32,6 +32,7 @@ public class Robots : MonoBehaviour
     {
         if (!played)
         {
+            
             GetComponent<AudioSource>().Play();
             played = true;
         }
