@@ -135,10 +135,12 @@
     <Compile Include="Assets\Scripts\Interaction\NetworkedSpawnableObject.cs" />
     <Compile Include="Assets\Scripts\Interaction\NetworkedTransform.cs" />
     <Compile Include="Assets\Scripts\Interaction\grasp.cs" />
+    <Compile Include="Assets\Scripts\Mechanism\ActivatedEmissive.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Floating.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Robots.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreMirror.cs" />
+    <Compile Include="Assets\Scripts\Mechanism\Shaking.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Shoot.cs" />
     <Compile Include="Assets\Scripts\UI\Begin.cs" />
     <Compile Include="Assets\Scripts\UI\NavMeshModifier.cs" />
