@@ -45,7 +45,6 @@ namespace Ubiq.XR
                 new Ray(new Vector3(position.x, 0f, position.z), Vector3.up),
                 new Ray(mainCamera.transform.position, mainCamera.transform.forward))
                 .start;
-            Debug.Log("GetProjectedHeight: " + up.ToString());
             return up.y;
         }
 
@@ -87,12 +86,10 @@ namespace Ubiq.XR
 
             if (grasped != null)
             {
-                //Debug.Log("grasped != null: " + transform.position.ToString());
                 var projectedHeight = GetProjectedHeight(transform.position);
                 var d = projectedHeight - previousProjectedHeight;
                 previousProjectedHeight = projectedHeight;
-                //Debug.Log("grasped != null 2: " + d.ToString());
-                transform.localPosition += new Vector3(0, d, 0);
+                //transform.localPosition += new Vector3(0, d, 0);  // useless bug producer
             }
         }
 

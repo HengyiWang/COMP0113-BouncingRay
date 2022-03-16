@@ -153,12 +153,17 @@
     <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
     <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
     <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
+    <Compile Include="Assets\Yurowm\Demo\Scripts\Actions.cs" />
+    <Compile Include="Assets\Yurowm\Demo\Scripts\CharacterPanel.cs" />
+    <Compile Include="Assets\Yurowm\Demo\Scripts\CharacterViewer.cs" />
+    <Compile Include="Assets\Yurowm\Demo\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
     <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Grass Sway.shader" />
     <None Include="Assets\Shaders\GhostlyHand\GhostlyHand.shader" />
     <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Blur.shader" />
+    <None Include="Assets\Yurowm\Shaders\SkinShader.shader" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\Readme.txt" />
     <None Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\Readme.txt" />
     <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.compute" />
