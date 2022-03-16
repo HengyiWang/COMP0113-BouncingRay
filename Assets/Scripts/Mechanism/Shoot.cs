@@ -55,7 +55,7 @@ public class Shoot : MonoBehaviour
         }
         if (Input.GetButtonUp("Fire1"))//when release mouse left button
         {
-            GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
+            //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
             GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
 
             clearMirrorSoundsTag();
@@ -78,7 +78,7 @@ public class Shoot : MonoBehaviour
         //laser.SetPosition(0,transform.position);
         Vector3 startingPos = transform.TransformPoint(muzzlePosition);
         CastRay(startingPos, transform.forward, laser, true);
-        GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
+        //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
         score = 0;
 
         laserIndices = new List<Vector3>();
