@@ -14,6 +14,7 @@ public class WalkHint : MonoBehaviour
     public float pathHintGroundOffset = 0.3f;
     public float lastHintGroundOffset = 1.5f;
     public float lastHintRotateSpeed = 180f;
+    public float reachThreshold = 1.0f;
 
     private List<GameObject> existingHints;
     private Vector3 sphereCenter;
@@ -22,20 +23,30 @@ public class WalkHint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         existingHints = new List<GameObject>();
         MeshCollider collider = sphere.GetComponent<MeshCollider>();
         sphereCenter = collider.bounds.center;
         sphereRadius = collider.bounds.extents.x;
     }
 
-
     // Update is called once per frame
     void Update()
     {
         destoryAllPathHints();
+        if (destination == null)
+        {
+            return;
+        }
+
         Vector3 end = findClosestPointOnSphere(destination.position);
         Vector3 start = findClosestPointOnSphere(transform.position);
+
+        if (Vector3.Distance(start, end) < reachThreshold)
+        {
+            destination = null;
+            return;
+        }
+
         float availableDistance = distanceBetweenTwoPointsOnSphere(start, end);
         Vector3 lastHintPosition = start;
         float occupiedDistance = initialOffset;
