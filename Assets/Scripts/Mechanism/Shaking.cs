@@ -1,25 +1,26 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class Shaking : MonoBehaviour
-//{
-//    public float radian = 0;
-//    public float radianChangeRate = 0.02f;
-//    float radius = 0.8f;
-//    Vector3 oldRot;
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-//        radian = Random.Range(0, Mathf.PI);
-//        oldRot = transform.rotation;
-//    }
+public class Shaking : MonoBehaviour
+{
+    public float dx=0f;
+    public float dy=0f;
+    public float dz=0f;
+    private float x;
+    private float y;
+    private float z;
+    // Start is called before the first frame update
+    void Start()
+    {
+    }
 
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        radian += radianChangeRate;
-//        float dy = Mathf.Cos(radian) * radius;
-//        transform.rotation = oldRot + new Vector3(0, dy, 0);
-//    }
-//}
+    // Update is called once per frame
+    void Update()
+    {
+        x += dx;
+        y += dy;
+        z += dz;
+        transform.localEulerAngles = new Vector3(x, y, z);
+    }
+}
