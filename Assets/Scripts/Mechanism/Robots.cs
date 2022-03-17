@@ -8,6 +8,7 @@ public class Robots : MonoBehaviour
     public bool isHitted;
     public bool energy;
     public bool played;
+    public AudioSource[] sound;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +33,8 @@ public class Robots : MonoBehaviour
     {
         if (!played)
         {
-            
-            GetComponent<AudioSource>().Play();
+            sound = GetComponents<AudioSource>();
+            sound[0].Play();
             played = true;
         }
     }
