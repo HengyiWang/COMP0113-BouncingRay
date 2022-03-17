@@ -25,9 +25,9 @@ public class Floating : MonoBehaviour
         x_init += dx;
         y_init += dy;
         z_init += dz;
-        float x = Mathf.Cos(x_init) * radius;
-        float y = Mathf.Cos(y_init) * radius;
-        float z = Mathf.Cos(z_init) * radius;
+        float x = Mathf.Sin(x_init) * radius;
+        float y = Mathf.Sin(y_init) * radius;
+        float z = Mathf.Sin(z_init) * radius;
         transform.position = oldPos + new Vector3(x, y, z);
     }
 }
