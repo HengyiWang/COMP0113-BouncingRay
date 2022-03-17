@@ -26,7 +26,7 @@ public class close_robot_roll : StateMachineBehaviour
         if (!energy)
         {
             sound = animator.GetComponents<AudioSource>();
-            sound[2].time = 2f;
+            //sound[2]. = 2f;
             sound[2].Play();
         }
     }
