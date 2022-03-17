@@ -11,7 +11,7 @@ using System;
 public class NetworkedOwnership : MonoBehaviour, INetworkComponent
 {
     // if true, this object is owned locally, otherwise remotely
-    public bool ownership = false;
+    public bool ownership = true;
     private NetworkContext ctx;
 
     public delegate void Relinquish();
