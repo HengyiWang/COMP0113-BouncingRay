@@ -53,6 +53,7 @@
     <UnityVersion>2019.4.34f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Close_robot_behav.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Demo\DemoScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorCameraScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorReflectionScript.cs" />
@@ -137,6 +138,8 @@
     <Compile Include="Assets\Scripts\Interaction\grasp.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ActivatedEmissive.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Floating.cs" />
+    <Compile Include="Assets\Scripts\Mechanism\GunHand.cs" />
+    <Compile Include="Assets\Scripts\Mechanism\MirrorHand.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Robots.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreMirror.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="Assets\Yurowm\Demo\Scripts\CharacterPanel.cs" />
     <Compile Include="Assets\Yurowm\Demo\Scripts\CharacterViewer.cs" />
     <Compile Include="Assets\Yurowm\Demo\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\close_robot_roll.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
