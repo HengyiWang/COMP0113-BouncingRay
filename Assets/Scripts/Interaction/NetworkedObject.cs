@@ -11,7 +11,7 @@ public class NetworkedObject : NetworkedOwnership, INetworkObject
 
     static public RoomClient GetRoomClient()
     {
-        var networkScene = GameObject.Find("NetworkScene");
+        var networkScene = GameObject.Find("Network Scene");
         if (!networkScene)
         {
             Debug.LogError("No NetworkScene!");
