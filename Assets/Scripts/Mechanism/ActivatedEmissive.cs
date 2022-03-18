@@ -11,7 +11,7 @@ public class ActivatedEmissive : MonoBehaviour
 
     private void Awake()
     {
-        this.maxEmissive = 0.5f;
+        this.maxEmissive = 1.0f;
         this.scoreMirrorComp = GetComponent<ScoreMirror>();
         this.m = GetComponent<Renderer>().material;
     }
