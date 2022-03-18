@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WalkHint : MonoBehaviour
 {
     // usage: attach to a character and change the destination
     public GameObject sphere;
-    public Transform destination;
+    public List<Transform> destinations;
     public GameObject pathHint;
     public float initialOffset = 5f;
     public float finalOffset = 1f;
@@ -14,16 +15,18 @@ public class WalkHint : MonoBehaviour
     public float pathHintGroundOffset = 0.3f;
     public float lastHintGroundOffset = 1.5f;
     public float lastHintRotateSpeed = 180f;
-    public float reachThreshold = 1.0f;
+    public float reachThreshold = 5.0f;
+    public Vector3 hintScale = Vector3.one * 0.05f;
+    public Vector3 hintRotation = new Vector3(180, 0, 0);
 
-    private List<GameObject> existingHints;
+    private Dictionary<Transform, List<GameObject>> existingHints;
     private Vector3 sphereCenter;
     private float sphereRadius;
 
     // Start is called before the first frame update
     void Start()
     {
-        existingHints = new List<GameObject>();
+        existingHints = new Dictionary<Transform, List<GameObject>>();
         MeshCollider collider = sphere.GetComponent<MeshCollider>();
         sphereCenter = collider.bounds.center;
         sphereRadius = collider.bounds.extents.x;
@@ -33,41 +36,57 @@ public class WalkHint : MonoBehaviour
     void Update()
     {
         destoryAllPathHints();
-        if (destination == null)
+        if (destinations.Count == 0)
         {
             return;
         }
 
-        Vector3 end = findClosestPointOnSphere(destination.position);
         Vector3 start = findClosestPointOnSphere(transform.position);
 
-        if (Vector3.Distance(start, end) < reachThreshold)
+
+        foreach (Transform destination in destinations)
         {
-            destination = null;
-            return;
+
+            Vector3 end = findClosestPointOnSphere(destination.position);
+
+            if (Vector3.Distance(start, end) < reachThreshold)
+            {
+                destinations.Remove(destination);
+                continue;
+            }
+
+            if (!existingHints.ContainsKey(destination))
+            {
+                existingHints.Add(destination, new List<GameObject>());
+            }
+
+            float availableDistance = distanceBetweenTwoPointsOnSphere(start, end);
+            Vector3 lastHintPosition = start;
+            float occupiedDistance = initialOffset;
+
+            while (occupiedDistance < availableDistance)
+            {
+                Vector3 hintPosition = Vector3.Slerp(start, end, occupiedDistance / (availableDistance + finalOffset));
+                GameObject pathHintInstance = Instantiate(pathHint, hintPosition, Quaternion.identity);
+                pathHintInstance.transform.rotation = Quaternion.LookRotation(hintPosition - sphereCenter, hintPosition - lastHintPosition);
+                pathHintInstance.transform.Translate(0, 0, -pathHintGroundOffset);
+                pathHintInstance.transform.localScale = hintScale;
+                pathHintInstance.transform.Rotate(hintRotation);
+                occupiedDistance += distanceBetweenTwoPointsOnSphere(hintPosition, lastHintPosition) + gap;
+                existingHints[destination].Add(pathHintInstance);
+                lastHintPosition = hintPosition;
+            }
+
+            GameObject lastHintInstance = Instantiate(pathHint, end, Quaternion.identity);
+            lastHintInstance.transform.up = end - sphereCenter;
+            lastHintInstance.transform.Translate(0, -lastHintGroundOffset, 0);
+            lastHintInstance.transform.Rotate(Vector3.up, Time.time * lastHintRotateSpeed);
+            lastHintInstance.transform.localScale = hintScale;
+            lastHintInstance.transform.Rotate(hintRotation);
+            existingHints[destination].Add(lastHintInstance);
         }
 
-        float availableDistance = distanceBetweenTwoPointsOnSphere(start, end);
-        Vector3 lastHintPosition = start;
-        float occupiedDistance = initialOffset;
-
-        while (occupiedDistance < availableDistance)
-        {
-            Vector3 hintPosition = Vector3.Slerp(start, end, occupiedDistance / (availableDistance + finalOffset));
-            //Vector3 hintPosition = findClosestPointOnSphere((sphereCenter + hintDirection) * sphereRadius);
-            GameObject pathHintInstance = Instantiate(pathHint, hintPosition, Quaternion.identity);
-            pathHintInstance.transform.rotation = Quaternion.LookRotation(hintPosition - sphereCenter, hintPosition - lastHintPosition);
-            pathHintInstance.transform.Translate(0, 0, -pathHintGroundOffset);
-            occupiedDistance += distanceBetweenTwoPointsOnSphere(hintPosition, lastHintPosition) + gap;
-            existingHints.Add(pathHintInstance);
-            lastHintPosition = hintPosition;
-        }
-
-        GameObject lastHintInstance = Instantiate(pathHint, end, Quaternion.identity);
-        lastHintInstance.transform.up = end - sphereCenter;
-        lastHintInstance.transform.Translate(0, -lastHintGroundOffset, 0);
-        lastHintInstance.transform.Rotate(Vector3.up, Time.time * lastHintRotateSpeed);
-        existingHints.Add(lastHintInstance);
+       
     }
 
     Vector3 findClosestPointOnSphere(Vector3 position)
@@ -85,12 +104,25 @@ public class WalkHint : MonoBehaviour
         return 2 * Mathf.PI * sphereRadius * (angleBetween / 360);
     }
 
+    void destoryPathHints(Transform key)
+    {
+        List<GameObject> hintsForThisKey;
+
+        if (existingHints.TryGetValue(key, out hintsForThisKey))
+        {
+            foreach (GameObject gameObject in hintsForThisKey)
+            {
+                Destroy(gameObject);
+            }
+            existingHints.Remove(key);
+        }
+    }
+
     void destoryAllPathHints()
     {
-        foreach (GameObject gameObject in existingHints)
+        foreach (Transform key in existingHints.Keys.ToArray())
         {
-            Destroy(gameObject);
+            destoryPathHints(key);
         }
-        existingHints = new List<GameObject>();
     }
 }

@@ -54,6 +54,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Close_robot_behav.cs" />
+    <Compile Include="Assets\Dark Singularity\Core Scripts\Singularity.cs" />
+    <Compile Include="Assets\Dark Singularity\Core Scripts\SingularityCore.cs" />
+    <Compile Include="Assets\Dark Singularity\Core Scripts\SingularityPullable.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Demo\DemoScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorCameraScript.cs" />
     <Compile Include="Assets\Prefabs\MagicMirror\Prefab\MirrorReflectionScript.cs" />
