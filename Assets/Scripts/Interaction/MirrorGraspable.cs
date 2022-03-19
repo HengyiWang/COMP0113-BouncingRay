@@ -11,6 +11,8 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
 
     private Vector3 intialForward;
 
+    public bool up=true;
+
     public new void Grasp(Hand controller)
     {
         base.Grasp(controller);
@@ -33,7 +35,16 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
         if (!freedom)
         {
             Vector3 mirrorToHand = follow.position - transform.position;
-            newForward = Vector3.Normalize(Vector3.Cross(mirrorToHand, transform.up));
+
+            if (up)
+            {
+                newForward = Vector3.Normalize(Vector3.Cross(mirrorToHand, transform.up));
+            } else
+            {
+                newForward = Vector3.Normalize(Vector3.Cross(mirrorToHand, transform.right));
+            }
+          
+            
 
         }
 
