@@ -66,7 +66,7 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
             newForward = transform.forward;
         }
 
-        desiredForward = Vector3.RotateTowards(transform.forward, newForward, 90f, 0f);
+        desiredForward = Vector3.RotateTowards(transform.forward, newForward, 180f, 0f);
 
         return desiredForward;
     }
@@ -83,7 +83,7 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
         if (follow)
         {
             desiredForward = calDesiredForward();
-            transform.rotation = Quaternion.LookRotation(desiredForward);
+            transform.rotation = Quaternion.LookRotation(desiredForward, transform.up);
         }
     }
 }
