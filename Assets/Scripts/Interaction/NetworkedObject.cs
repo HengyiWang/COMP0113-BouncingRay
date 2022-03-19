@@ -27,6 +27,7 @@ public class NetworkedObject : NetworkedOwnership, INetworkObject
     {
         var rc = GetRoomClient();
         rc.OnJoinedRoom.AddListener(OwnOnJoinedRoom);
+        Own();
 
         string uniqueTag = transform.position.ToString() +
                             transform.rotation.ToString();
