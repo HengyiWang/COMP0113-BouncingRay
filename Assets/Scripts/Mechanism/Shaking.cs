@@ -7,9 +7,10 @@ public class Shaking : MonoBehaviour
     public float dx=0f;
     public float dy=0f;
     public float dz=0f;
-    private float x;
-    private float y;
-    private float z;
+    public float speed=0.05f;
+    private float x=0f;
+    private float y=0f;
+    private float z=0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,8 @@ public class Shaking : MonoBehaviour
         x += dx;
         y += dy;
         z += dz;
-        transform.localEulerAngles = new Vector3(x, y, z);
+
+        //transform.localEulerAngles = new Vector3(Mathf.Sin(x), Mathf.Sin(y), Mathf.Sin(z));
+        transform.Rotate(Mathf.Sin(speed * x), Mathf.Sin(speed * y), Mathf.Sin(speed * z));
     }
 }
