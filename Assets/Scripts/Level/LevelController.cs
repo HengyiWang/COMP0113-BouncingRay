@@ -98,6 +98,15 @@ public abstract class LevelController : MonoBehaviour
             }
         }
 
+        foreach (EventChain chain in finishEventChains)
+        {
+            // already running finish event
+            if (chain.runningEvent != null)
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 
