@@ -44,7 +44,7 @@ public class WalkHint : MonoBehaviour
         Vector3 start = findClosestPointOnSphere(transform.position);
 
 
-        foreach (Transform destination in destinations)
+        foreach (Transform destination in destinations.ToList())  // iterate over a copy because destination may change
         {
 
             Vector3 end = findClosestPointOnSphere(destination.position);
