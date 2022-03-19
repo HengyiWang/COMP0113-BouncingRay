@@ -11,6 +11,8 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
 
     private Vector3 intialForward;
 
+    public bool up=true;
+
     public new void Grasp(Hand controller)
     {
         base.Grasp(controller);
@@ -33,7 +35,16 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
         if (!freedom)
         {
             Vector3 mirrorToHand = follow.position - transform.position;
-            newForward = Vector3.Normalize(Vector3.Cross(mirrorToHand, transform.up));
+
+            if (up)
+            {
+                newForward = Vector3.Normalize(Vector3.Cross(mirrorToHand, transform.up));
+            } else
+            {
+                newForward = Vector3.Normalize(Vector3.Cross(mirrorToHand, transform.right));
+            }
+          
+            
 
         }
 
@@ -55,7 +66,7 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
             newForward = transform.forward;
         }
 
-        desiredForward = Vector3.RotateTowards(transform.forward, newForward, 90f, 0f);
+        desiredForward = Vector3.RotateTowards(transform.forward, newForward, 180f, 0f);
 
         return desiredForward;
     }
@@ -72,7 +83,7 @@ public class MirrorGraspable : MyFollowGraspable, IGraspable
         if (follow)
         {
             desiredForward = calDesiredForward();
-            transform.rotation = Quaternion.LookRotation(desiredForward);
+            transform.rotation = Quaternion.LookRotation(desiredForward, transform.up);
         }
     }
 }
