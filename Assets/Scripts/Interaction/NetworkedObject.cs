@@ -19,15 +19,21 @@ public class NetworkedObject : NetworkedOwnership, INetworkObject
         return networkScene.GetComponent<RoomClient>();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        Own();
+    }
+
     public void OwnOnJoinedRoom(IRoom room)
     {
         Own();
     }
-    public void Awake()
+
+    void Awake()
     {
         var rc = GetRoomClient();
         rc.OnJoinedRoom.AddListener(OwnOnJoinedRoom);
-        Own();
 
         string uniqueTag = transform.position.ToString() +
                             transform.rotation.ToString();

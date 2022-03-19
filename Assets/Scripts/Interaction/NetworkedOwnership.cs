@@ -19,7 +19,7 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         release = new List<Relinquish>();
         ctx = NetworkScene.Register(this);
