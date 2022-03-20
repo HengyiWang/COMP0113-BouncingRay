@@ -122,7 +122,8 @@ public class Shoot : MonoBehaviour
 
     bool checkColorID(RaycastHit hitInfo)
     {
-        return hitInfo.collider.gameObject.GetComponent<ScoreMirror>().colorID == colorID;
+        int targetID = hitInfo.collider.gameObject.GetComponent<ScoreMirror>().colorID;
+        return targetID == colorID || targetID == -1;
     }
 
     void CheckHit(RaycastHit hitInfo, Vector3 direction, LineRenderer laser, bool calScore)
