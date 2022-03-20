@@ -6,6 +6,7 @@ public class ScoreMirror : MonoBehaviour
 {
     public bool hitted;
     public bool played;
+    public int colorID;
     public Vector3 hitPoint = new Vector3(0,0,0);
     private Vector3 lastHitPoint = new Vector3(0, 0, 0);
     private float ftime;

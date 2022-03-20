@@ -62,9 +62,9 @@ Material:
     - _DstBlend: 0
     - _EmissionScaleUI: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.3
+    - _Glossiness: 0.73
     - _GlossyReflections: 1
-    - _Metallic: 0.9
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -75,5 +75,5 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
+    - _EmissionColor: {r: 0.17788847, g: 0.17788847, b: 0.17788847, a: 1}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
