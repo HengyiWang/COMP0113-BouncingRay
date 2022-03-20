@@ -7,6 +7,7 @@ using System;
 public class Shoot : MonoBehaviour
 {
     public float range = 100f;
+    public int colorID;
     private int number_of_all_gems;
     private bool grasped;
     public bool clicked = false;
@@ -137,9 +138,15 @@ public class Shoot : MonoBehaviour
         }
     }
 
+    bool checkColorID(RaycastHit hitInfo)
+    {
+        int targetID = hitInfo.collider.gameObject.GetComponent<ScoreMirror>().colorID;
+        return targetID == colorID || targetID == -1;
+    }
+
     void CheckHit(RaycastHit hitInfo, Vector3 direction, LineRenderer laser, bool calScore)
     {
-        if (hitInfo.collider.gameObject.tag == "ReflectObject")
+        if (hitInfo.collider.gameObject.tag == "ReflectObject" && checkColorID(hitInfo))
         {
             hitInfo.collider.gameObject.GetComponent<ScoreMirror>().playAudioSource();
             if (!hitInfo.collider.gameObject.GetComponent<ScoreMirror>().hitted && calScore)
