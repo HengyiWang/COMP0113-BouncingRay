@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public abstract class LevelEvent : MonoBehaviour
 {
-
+    [HideInInspector]
     public UnityEvent OnComplete = new UnityEvent();
 
     public ReadOnlyCollection<LevelEvent> previousEvents;

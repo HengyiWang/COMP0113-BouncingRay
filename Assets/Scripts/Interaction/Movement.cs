@@ -113,7 +113,6 @@ public class Movement : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                Debug.Log(charNormal * jumpStrength);
                 GetComponent<Rigidbody>().AddForce(charNormal * jumpStrength, ForceMode.Impulse);
             }
         }

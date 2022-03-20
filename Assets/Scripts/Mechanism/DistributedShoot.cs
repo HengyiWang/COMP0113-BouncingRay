@@ -2,31 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Ubiq.Samples;
-using System;
 
-public class Shoot : MonoBehaviour
+public class DistributedShoot : MonoBehaviour
 {
     public float range = 100f;
     public int colorID;
     private int number_of_all_gems;
     private bool grasped;
     public bool clicked = false;
-    private NetworkedOwnership ownershipComp;
+    private NetworkedOwnership gunOwnership;
     public int score = 0;
     public Vector3 muzzlePosition = new Vector3(0.0f, 0.0f, 0.0f);
-    float timer;
+    //float timer;
     //float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
-    LineRenderer laser;
+    LineRenderer laserRenderer;
     List<Vector3> laserIndices;
 
     // Start is called before the first frame update
     void Start()
     {
-
         // LineRenderer for the laser
-        laser = GetComponent<LineRenderer>();
-        ownershipComp = GetComponent<NetworkedOwnership>();
-        if (!ownershipComp)
+        laserRenderer = GetComponent<LineRenderer>();
+        gunOwnership = GetComponent<NetworkedOwnership>();
+        if (!gunOwnership)
         {
             Debug.LogError("ownership component is missing!");
         }
@@ -34,52 +32,49 @@ public class Shoot : MonoBehaviour
         number_of_all_gems = GameObject.Find("All_Gem").transform.childCount;
     }
 
+    private bool OwnThisGun()
+    {
+        return gunOwnership && gunOwnership.ownership;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (ownershipComp && ownershipComp.ownership)
+        clicked = OwnThisGun() ? Input.GetButton("Fire1") : false;
+
+        if (!clicked)
         {
-            clicked = Input.GetButton("Fire1");
+            return;
         }
+
         grasped = GetComponent<MyFollowGraspable>().grasped;
+
+        if (!grasped)
+        {
+            return;
+        }
+
         // Update time for one frame
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
         if (grasped && clicked)
         {
             BeginShoot();
-            activateLight();
             GetComponent<AudioSource>().Play();
         }
         else
         {
-            laser.enabled = false;
+            laserRenderer.enabled = false;
             laserIndices = new List<Vector3>();
             updateLaser();
         }
         if (Input.GetButtonUp("Fire1"))//when release mouse left button
         {
-            GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
+            //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
             GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
 
             clearMirrorSoundsTag();
         }
     }
-
-    private void activateLight()
-    {
-        Vector3 startingPos = transform.TransformPoint(muzzlePosition);
-        Ray ray = new Ray(startingPos, transform.forward);
-        RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, range, 1))
-        {
-            GameObject hitted = hitInfo.collider.gameObject;
-            if (hitted.tag == "lightSwitch")
-            {
-                hitted.GetComponent<Switch>().activate();
-            }
-        }
-    }
-
     void clearMirrorSoundsTag()
     {
         var gemObjects = GameObject.FindGameObjectsWithTag("ReflectObject");
@@ -91,27 +86,27 @@ public class Shoot : MonoBehaviour
     }
     void BeginShoot()
     {
-        timer = 0.0f;
-        laser.enabled = true;
+        //timer = 0.0f;
+        laserRenderer.enabled = true;
         laserIndices = new List<Vector3>();
         //laser.SetPosition(0,transform.position);
         Vector3 startingPos = transform.TransformPoint(muzzlePosition);
-        CastRay(startingPos, transform.forward, laser, true);
-        GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
+        CastRay(startingPos, transform.forward, laserRenderer, true);
+        //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
         score = 0;
 
         laserIndices = new List<Vector3>();
-        CastRay(startingPos, transform.forward, laser, false);
+        CastRay(startingPos, transform.forward, laserRenderer, false);
     }
 
 
-    void CastRay(Vector3 pos,Vector3 dir,LineRenderer laser,bool calScore)
+    void CastRay(Vector3 pos, Vector3 dir, LineRenderer laser, bool calScore)
     {
         laserIndices.Add(pos);
-        Ray ray = new Ray(pos,dir);
+        Ray ray = new Ray(pos, dir);
         RaycastHit hitInfo;
 
-        if(Physics.Raycast(ray, out hitInfo, range, 1))
+        if (Physics.Raycast(ray, out hitInfo, range, 1))
         {
             // if hit something, then checkhit
             CheckHit(hitInfo, dir, laser, calScore);
@@ -129,11 +124,11 @@ public class Shoot : MonoBehaviour
     void updateLaser()
     {
         int count = 0;
-        laser.positionCount = laserIndices.Count;
+        laserRenderer.positionCount = laserIndices.Count;
 
         foreach (Vector3 idx in laserIndices)
         {
-            laser.SetPosition(count,idx);
+            laserRenderer.SetPosition(count, idx);
             count++;
         }
     }
@@ -164,7 +159,7 @@ public class Shoot : MonoBehaviour
 
             //Debug.Log("Hit reflect object");
             Vector3 pos = hitInfo.point;
-            Vector3 dir = Vector3.Reflect(direction,hitInfo.normal);
+            Vector3 dir = Vector3.Reflect(direction, hitInfo.normal);
             CastRay(pos, dir, laser, calScore);
         }
         else
@@ -181,7 +176,7 @@ public class Shoot : MonoBehaviour
             if (score == number_of_all_gems && number_of_all_gems > 0)
             {
                 hitInfo.collider.gameObject.GetComponent<Robots>().energy = true;
-    
+
             }
 
         }

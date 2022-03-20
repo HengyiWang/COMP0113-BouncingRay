@@ -13,6 +13,7 @@ public class GemsGeneration : MonoBehaviour
     private Vector3 sphereCenter;
     private float sphereRadius;
     private List<GameObject> existingDecorations;
+    private Material sphereMaterial;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class GemsGeneration : MonoBehaviour
         MeshCollider collider = sphere.GetComponent<MeshCollider>();
         sphereCenter = collider.bounds.center;
         sphereRadius = collider.bounds.extents.x;
+        sphereMaterial = sphere.GetComponent<MeshRenderer>().material;
 
         existingDecorations = new List<GameObject>();
 
@@ -30,10 +32,24 @@ public class GemsGeneration : MonoBehaviour
             GameObject chosenPrefab = gemCatalogue.GetPrefab(Random.Range(0, gemCatalogue.size));
             Vector3 chosenLocation = Random.onUnitSphere * sphereRadius + sphereCenter;
             GameObject spawnedInstance = Instantiate(chosenPrefab, chosenLocation, Quaternion.identity);
+            setMaterial(spawnedInstance, sphereMaterial);
             spawnedInstance.transform.up = (sphereCenter - chosenLocation).normalized;
             existingDecorations.Add(spawnedInstance);
         }
 
+    }
+
+    void setMaterial(GameObject gameobject, Material material)
+    {
+        foreach (MeshRenderer renderer in gameobject.GetComponents<MeshRenderer>())
+        {
+            renderer.material = material;
+        }
+
+        foreach (MeshRenderer renderer in gameobject.GetComponentsInChildren<MeshRenderer>())
+        {
+            renderer.material = material;
+        }
     }
 
     // Update is called once per frame

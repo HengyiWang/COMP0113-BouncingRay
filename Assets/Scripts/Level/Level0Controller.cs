@@ -6,10 +6,11 @@ public class Level0Controller : LevelController
 {
     public List<LevelEvent> guideEvents;
 
-    public List<LevelEvent> tempEvents;
+    public List<LevelEvent> endGameEvents;
 
     protected override void SetUp()
     {
         initialize(guideEvents);
+        initialize(endGameEvents);
     }
 }
