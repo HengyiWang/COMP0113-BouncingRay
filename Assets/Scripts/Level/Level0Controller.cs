@@ -4,23 +4,12 @@ using UnityEngine;
 
 public class Level0Controller : LevelController
 {
-    public GameObject player;
-    public List<Transform> destinations;
-    public GameObject sphere;
-    public GameObject pathHint;
-    public Vector3 hintScale;
-    public Vector3 hintRotation;
+    public List<LevelEvent> guideEvents;
 
-    public GameObject pointer;
+    public List<LevelEvent> tempEvents;
 
-    protected override void ControllerStart()
+    protected override void SetUp()
     {
-        OnInit(new PathHintEvent(player, destinations, sphere, pathHint, hintScale, hintRotation))
-            .Then(new PointerHintEvent(pointer, new Vector3(1.413f, -30, 0), new Vector3(0.06f, 0.06f, 0.06f), GetComponent<NetworkedOwnership>()));
-    }
-
-    protected override void ControllerUpdate()
-    {
-        
+        initialize(guideEvents);
     }
 }

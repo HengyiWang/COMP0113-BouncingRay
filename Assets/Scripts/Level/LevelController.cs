@@ -11,18 +11,24 @@ public abstract class LevelController : MonoBehaviour
 
     protected sealed class EventChain
     {
-        private Queue<LevelEvent> chain;
+        private Queue<LevelEvent> followingEvents;
+        private List<LevelEvent> previousEvents;
         public LevelEvent runningEvent = null;
 
-        public EventChain(LevelEvent levelEvent)
+        public EventChain()
         {
-            chain = new Queue<LevelEvent>();
-            chain.Enqueue(levelEvent);
+            followingEvents = new Queue<LevelEvent>();
+            previousEvents = new List<LevelEvent>();
+        }
+
+        public EventChain(LevelEvent levelEvent) : this()
+        {
+            followingEvents.Enqueue(levelEvent);
         }
 
         public EventChain Then(LevelEvent levelEvent)
         {
-            chain.Enqueue(levelEvent);
+            followingEvents.Enqueue(levelEvent);
             return this;
         }
 
@@ -30,20 +36,24 @@ public abstract class LevelController : MonoBehaviour
         {
             if (runningEvent != null)
             {
-                runningEvent.OnDestory();
+                runningEvent.OnEventDestory();
+                runningEvent.enabled = false;
+                previousEvents.Add(runningEvent);
                 runningEvent = null;
             }
-            if (chain.Count > 0)
+            if (followingEvents.Count > 0)
             {
-                runningEvent = chain.Dequeue();
-                runningEvent.Start();
+                runningEvent = followingEvents.Dequeue();
+                runningEvent.previousEvents = previousEvents.AsReadOnly();
+                runningEvent.followingEvents = followingEvents;
                 runningEvent.OnComplete.AddListener(this.Run);
+                runningEvent.enabled = true;
             }
         }
 
         public bool IsFinished()
         {
-            return chain.Count == 0 && runningEvent == null;
+            return followingEvents.Count == 0 && runningEvent == null;
         }
     }
 
@@ -52,7 +62,7 @@ public abstract class LevelController : MonoBehaviour
         initEventChains = new List<EventChain>();
         finishEventChains = new List<EventChain>();
 
-        ControllerStart();
+        SetUp();
 
         foreach (EventChain chain in initEventChains)
         {
@@ -63,12 +73,7 @@ public abstract class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ControllerUpdate();
-
-        EventChainUpdate(initEventChains);
-        EventChainUpdate(finishEventChains);
-
-        if (IsTimeForFinishEvent())
+        if (IsTimeToStartFinishEvent())
         {
             foreach (EventChain chain in finishEventChains)
             {
@@ -77,18 +82,7 @@ public abstract class LevelController : MonoBehaviour
         }
     }
 
-    private void EventChainUpdate(List<EventChain> eventChainList)
-    {
-        foreach (EventChain chain in eventChainList)
-        {
-            if (chain.runningEvent != null && !chain.IsFinished())
-            {
-                chain.runningEvent.Update();
-            }
-        }
-    }
-
-    private bool IsTimeForFinishEvent()
+    private bool IsTimeToStartFinishEvent()
     {
         foreach (EventChain chain in initEventChains)
         {
@@ -124,7 +118,17 @@ public abstract class LevelController : MonoBehaviour
         return chain;
     }
 
-    protected abstract void ControllerStart();
+    protected abstract void SetUp();
 
-    protected abstract void ControllerUpdate();
+
+    // helper methods
+    protected void initialize(List<LevelEvent> events)
+    {
+        EventChain eventChain = OnInit(events[0]);
+        for (int i = 1; i < events.Count; i++)
+        {
+            eventChain = eventChain.Then(events[i]);
+        }
+    }
+
 }

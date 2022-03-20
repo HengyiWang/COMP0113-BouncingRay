@@ -1,46 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 public class PointerHintEvent : LevelEvent
 {
 
-    private GameObject pointer;
-    private Vector3 position;
-    private Vector3 scale;
+    public GameObject pointer;
+    public Vector3 position;
+    public Vector3 scale;
+
+    public float x_init = 0f;
+    public float y_init = 0f;
+    public float z_init = 0f;
+    public float dx = 0f;
+    public float dy = 0.04f;
+    public float dz = 0f;
+    public float radius = 0.8f;
 
     private GameObject pointerInstance;
 
-    private NetworkedOwnership ownershipComp;
-    private float x_init = 0f;
-    private float y_init = 0f;
-    private float z_init = 0f;
-    private float dx = 0f;
-    private float dy = 0.04f;
-    private float dz = 0f;
-    private float radius = 0.8f;
 
-    public PointerHintEvent(GameObject pointer, Vector3 position, Vector3 scale, NetworkedOwnership ownership)
-    {
-        this.pointer = pointer;
-        this.position = position;
-        this.scale = scale;
-        ownershipComp = ownership;
-    }
-
-    public override void OnDestory()
-    {
-        Object.Destroy(pointerInstance);
-    }
-
-    protected override void EventStart()
+    protected override void EventStart(ReadOnlyCollection<LevelEvent> previousEvents, Queue<LevelEvent> followingEvents)
     {
         pointerInstance = Object.Instantiate(pointer, position, Quaternion.identity);
         pointerInstance.transform.localScale = scale;
     }
 
-    protected override void EventUpdate()
+    protected override void EventUpdate(ReadOnlyCollection<LevelEvent> previousEvents, Queue<LevelEvent> followingEvents)
     {
+        NetworkedOwnership ownershipComp = GetComponent<NetworkedOwnership>();
         if (!ownershipComp || (ownershipComp && ownershipComp.ownership))
         {
             x_init += dx;
@@ -64,5 +53,9 @@ public class PointerHintEvent : LevelEvent
             }
         }
         return false;
+    }
+
+    public override void OnEventDestory() {
+        Destroy(pointerInstance);
     }
 }

@@ -1,35 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 
 public class PathHintEvent : LevelEvent
 {
-    private GameObject objToAdd;
-    private List<Transform> destinations;
-    private GameObject pathHint;
-    private GameObject sphere;
-    private Vector3 hintScale;
-    private Vector3 hintRotation;
+    public GameObject objToAdd;
+    public List<Transform> destinations;
+    public GameObject pathHint;
+    public GameObject sphere;
+    public Vector3 hintScale;
+    public Vector3 hintRotation;
 
     private WalkHint walkHint;
 
-    public PathHintEvent(GameObject objToAdd, List<Transform> destinations, GameObject sphere, GameObject pathHint, Vector3 hintScale, Vector3 hintRotation)
-    {
-        this.objToAdd = objToAdd;
-        this.destinations = destinations;
-        this.pathHint = pathHint;
-        this.hintScale = hintScale;
-        this.hintRotation = hintRotation;
-        this.sphere = sphere;
-    }
-
     protected override bool IsCompleted()
     {
-        return walkHint.destinations.Count < destinations.Count;  // reach any destination is complete
+        return walkHint.destinations.Count < destinations.Count || destinations.Count == 0;
     }
 
-    protected override void EventStart()
+    protected override void EventStart(ReadOnlyCollection<LevelEvent> previousEvents, Queue<LevelEvent> followingEvents)
     {
         walkHint = objToAdd.AddComponent<WalkHint>();
         walkHint.sphere = sphere;
@@ -43,13 +34,14 @@ public class PathHintEvent : LevelEvent
         }
     }
 
-    protected override void EventUpdate()
+    protected override void EventUpdate(ReadOnlyCollection<LevelEvent> previousEvents, Queue<LevelEvent> followingEvents)
     {
         
     }
 
-    public override void OnDestory()
+    public override void OnEventDestory()
     {
-        GameObject.Destroy(walkHint);
+        walkHint.destoryAllPathHints();
+        Destroy(walkHint);
     }
 }

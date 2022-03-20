@@ -1,37 +1,45 @@
-﻿using System.Collections;
+﻿using System.Collections.ObjectModel;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class LevelEvent
+[System.Serializable]
+public abstract class LevelEvent : MonoBehaviour
 {
 
-    public UnityEvent OnComplete;
+    public UnityEvent OnComplete = new UnityEvent();
 
-    // Start is called before the first frame update
-    public void Start()
+    public ReadOnlyCollection<LevelEvent> previousEvents;
+    public Queue<LevelEvent> followingEvents;
+
+    public void Awake()
     {
-        OnComplete = new UnityEvent();
-        EventStart();
+        enabled = false;
     }
 
-    // Update is called once per frame
+    public void Start()
+    {
+        EventStart(previousEvents, followingEvents);
+
+    }
+
     public void Update()
     {
-        EventUpdate();
-
         if (IsCompleted())
         {
             OnComplete.Invoke();
         }
+
+        EventUpdate(previousEvents, followingEvents);
     }
 
-    public abstract void OnDestory();
+    protected abstract void EventStart(ReadOnlyCollection<LevelEvent> previousEvents, Queue<LevelEvent> followingEvents);
 
-    protected abstract void EventStart();
-
-    protected abstract void EventUpdate();
+    protected abstract void EventUpdate(ReadOnlyCollection<LevelEvent> previousEvents, Queue<LevelEvent> followingEvents);
 
     protected abstract bool IsCompleted();
+
+    public virtual void OnEventDestory() { }
 
 }

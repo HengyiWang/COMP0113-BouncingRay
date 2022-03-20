@@ -13,7 +13,7 @@ public class Shoot : MonoBehaviour
     public int score = 0;
     public Vector3 muzzlePosition = new Vector3(0.0f, 0.0f, 0.0f);
     float timer;
-    float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
+    //float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
     LineRenderer laser;
     List<Vector3> laserIndices;
 

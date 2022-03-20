@@ -36,10 +36,6 @@ public class WalkHint : MonoBehaviour
     void Update()
     {
         destoryAllPathHints();
-        if (destinations.Count == 0)
-        {
-            return;
-        }
 
         Vector3 start = findClosestPointOnSphere(transform.position);
 
@@ -118,7 +114,7 @@ public class WalkHint : MonoBehaviour
         }
     }
 
-    void destoryAllPathHints()
+    public void destoryAllPathHints()
     {
         foreach (Transform key in existingHints.Keys.ToArray())
         {

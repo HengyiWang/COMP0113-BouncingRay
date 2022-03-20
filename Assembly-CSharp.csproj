@@ -139,11 +139,13 @@
     <Compile Include="Assets\Scripts\Interaction\NetworkedSpawnableObject.cs" />
     <Compile Include="Assets\Scripts\Interaction\NetworkedTransform.cs" />
     <Compile Include="Assets\Scripts\Interaction\grasp.cs" />
+    <Compile Include="Assets\Scripts\Level\IfEvent.cs" />
     <Compile Include="Assets\Scripts\Level\Level0Controller.cs" />
     <Compile Include="Assets\Scripts\Level\LevelController.cs" />
     <Compile Include="Assets\Scripts\Level\LevelEvent.cs" />
     <Compile Include="Assets\Scripts\Level\PathHintEvent.cs" />
     <Compile Include="Assets\Scripts\Level\PointerHintEvent.cs" />
+    <Compile Include="Assets\Scripts\Level\TestIfEvent.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ActivatedEmissive.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Floating.cs" />
     <Compile Include="Assets\Scripts\Mechanism\GunHand.cs" />
