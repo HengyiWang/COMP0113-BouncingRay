@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Ubiq.Samples;
+using System;
 
 public class Shoot : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class Shoot : MonoBehaviour
         if (grasped && clicked)
         {
             BeginShoot();
+            activateLight();
             GetComponent<AudioSource>().Play();
         }
         else
@@ -62,6 +64,22 @@ public class Shoot : MonoBehaviour
             clearMirrorSoundsTag();
         }
     }
+
+    private void activateLight()
+    {
+        Vector3 startingPos = transform.TransformPoint(muzzlePosition);
+        Ray ray = new Ray(startingPos, transform.forward);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, range, 1))
+        {
+            GameObject hitted = hitInfo.collider.gameObject;
+            if (hitted.tag == "lightSwitch")
+            {
+                hitted.GetComponent<Switch>().activate();
+            }
+        }
+    }
+
     void clearMirrorSoundsTag()
     {
         var gemObjects = GameObject.FindGameObjectsWithTag("ReflectObject");
