@@ -27,6 +27,10 @@ public class WalkHint : MonoBehaviour
     void Start()
     {
         existingHints = new Dictionary<Transform, List<GameObject>>();
+        if (sphere == null)
+        {
+            return;
+        }
         MeshCollider collider = sphere.GetComponent<MeshCollider>();
         sphereCenter = collider.bounds.center;
         sphereRadius = collider.bounds.extents.x;
@@ -36,6 +40,10 @@ public class WalkHint : MonoBehaviour
     void Update()
     {
         destoryAllPathHints();
+        if (sphere == null)
+        {
+            return;
+        }
 
         Vector3 start = findClosestPointOnSphere(transform.position);
 
