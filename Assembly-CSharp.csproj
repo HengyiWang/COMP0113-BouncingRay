@@ -127,17 +127,20 @@
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Single\Rooms\Scripts\RoomClientJoinHelper.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Single\Spawning\PrefabsMenu.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Single\Spawning\SpawnPrefabControl.cs" />
+    <Compile Include="Assets\Scripts\Interaction\FlashlightGraspable.cs" />
     <Compile Include="Assets\Scripts\Interaction\GunGraspable.cs" />
     <Compile Include="Assets\Scripts\Interaction\MirrorGraspable.cs" />
     <Compile Include="Assets\Scripts\Interaction\Move.cs" />
     <Compile Include="Assets\Scripts\Interaction\Movement.cs" />
     <Compile Include="Assets\Scripts\Interaction\MyFollowGraspable.cs" />
+    <Compile Include="Assets\Scripts\Interaction\NetworkedFlashlightStates.cs" />
     <Compile Include="Assets\Scripts\Interaction\NetworkedGunStates.cs" />
     <Compile Include="Assets\Scripts\Interaction\NetworkedObject.cs" />
     <Compile Include="Assets\Scripts\Interaction\NetworkedOwnership.cs" />
     <Compile Include="Assets\Scripts\Interaction\NetworkedRigidBody.cs" />
     <Compile Include="Assets\Scripts\Interaction\NetworkedSpawnableObject.cs" />
     <Compile Include="Assets\Scripts\Interaction\NetworkedTransform.cs" />
+    <Compile Include="Assets\Scripts\Interaction\Switch.cs" />
     <Compile Include="Assets\Scripts\Interaction\grasp.cs" />
     <Compile Include="Assets\Scripts\Level\IfEvent.cs" />
     <Compile Include="Assets\Scripts\Level\Level0Controller.cs" />
@@ -155,6 +158,7 @@
     <Compile Include="Assets\Scripts\Mechanism\ScoreMirror.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Shaking.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Shoot.cs" />
+    <Compile Include="Assets\Scripts\Mechanism\ShootLighting.cs" />
     <Compile Include="Assets\Scripts\UI\Begin.cs" />
     <Compile Include="Assets\Scripts\UI\GemCatalogue.cs" />
     <Compile Include="Assets\Scripts\UI\GemsGeneration.cs" />
@@ -194,6 +198,7 @@
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Environments\Apartment\Sources.txt" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\MirrorShaderBumpMap.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Avatars\Floating\LICENSE.txt" />
+    <None Include="Assets\Luminaris Starship\Documentation\Readme Luminaris.txt" />
     <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Depth Mask Edge Detection.shader" />
     <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Ocean.shader" />
     <None Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Dissolve.shader" />
