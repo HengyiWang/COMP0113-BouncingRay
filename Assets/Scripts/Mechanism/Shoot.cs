@@ -46,8 +46,8 @@ public class Shoot : MonoBehaviour
         timer += Time.deltaTime;
         if (grasped && clicked)
         {
-            BeginShoot();
             activateLight();
+            BeginShoot();
             GetComponent<AudioSource>().Play();
         }
         else
