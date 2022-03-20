@@ -6,9 +6,9 @@ TagManager:
   tags:
   - ReflectObject
   - Pistol
-  - Robot
-  - Robot
   - lightSwitch
+  - Robot
+  - Robot
   layers:
   - Default
   - TransparentFX
