@@ -4785,7 +4785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2d0c71657d38547864fd6be1b5cc91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: Switch
+  targetScene: Switch_v2
 --- !u!1 &1538198692609426262
 GameObject:
   m_ObjectHideFlags: 0
