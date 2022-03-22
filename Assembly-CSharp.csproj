@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{6DBC74ED-3865-22E5-B173-050682B69BA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -161,6 +160,7 @@
     <Compile Include="Assets\Scripts\Level\WaitForWinEvent.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ActivatedEmissive.cs" />
     <Compile Include="Assets\Scripts\Mechanism\DistributedShoot.cs" />
+    <Compile Include="Assets\Scripts\Mechanism\FixPlayerFallingOutOfSphere.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Floating.cs" />
     <Compile Include="Assets\Scripts\Mechanism\FloorNormalAdjust.cs" />
     <Compile Include="Assets\Scripts\Mechanism\GunHand.cs" />

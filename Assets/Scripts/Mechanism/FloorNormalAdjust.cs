@@ -23,13 +23,10 @@ public class FloorNormalAdjust : MonoBehaviour
         GetComponent<Rigidbody>().freezeRotation = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         adjustAvatarNormalByFloor();
     }
-
-
 
     void adjustAvatarNormalByFloor()
     {
