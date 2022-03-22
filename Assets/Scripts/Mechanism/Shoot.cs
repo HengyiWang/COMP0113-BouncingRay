@@ -12,7 +12,8 @@ public class Shoot : MonoBehaviour
     private bool grasped;
     public bool clicked = false;
     private NetworkedOwnership ownershipComp;
-    public int score = 0;
+    private int score = 0;
+    public int score_this_gun = 0;
     public Vector3 muzzlePosition = new Vector3(0.0f, 0.0f, 0.0f);
     float timer;
     //float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
@@ -58,7 +59,8 @@ public class Shoot : MonoBehaviour
         }
         if (Input.GetButtonUp("Fire1"))//when release mouse left button
         {
-            GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
+            //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
+            score_this_gun = 0;
             GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
 
             clearMirrorSoundsTag();
@@ -172,14 +174,14 @@ public class Shoot : MonoBehaviour
             laserIndices.Add(hitInfo.point);
             updateLaser();
         }
-
         // Code for robot
         if (hitInfo.collider.gameObject.tag == "Robot")
         {
             hitInfo.collider.gameObject.GetComponent<Robots>().isHitted = true;
             if (calScore)
             {
-                GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
+                //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
+                score_this_gun = score;
             }
             
             if (score == number_of_all_gems && number_of_all_gems > 0)
@@ -187,7 +189,6 @@ public class Shoot : MonoBehaviour
                 hitInfo.collider.gameObject.GetComponent<Robots>().energy = true;
     
             }
-
         }
     }
 }

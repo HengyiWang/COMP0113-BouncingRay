@@ -17,6 +17,7 @@ public class UIScore : MonoBehaviour
     void Update()
     {
         Score = GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score;
-        GetComponent<TextMesh>().text = "Score: " + Score.ToString();
+        GameObject.Find("SimpleHelvetica").GetComponent<SimpleHelvetica>().Text = "Score: " + Score.ToString();
+        //GetComponent<TextMesh>().text = "Score: " + Score.ToString();
     }
 }
