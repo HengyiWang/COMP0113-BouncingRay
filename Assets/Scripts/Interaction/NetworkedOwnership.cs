@@ -11,12 +11,22 @@ using System;
 public class NetworkedOwnership : MonoBehaviour, INetworkComponent
 {
     // if true, this object is owned locally, otherwise remotely
-    public bool ownership = true;
+    public bool ownership;
     private NetworkContext ctx;
 
     public delegate void Relinquish();
     private List<Relinquish> release;
 
+    // timestamp to solve synchronization issues
+    private DateTime lastOwnedTime;
+    class Message
+    {
+        public DateTime ownTime;
+        public Message(DateTime t)
+        {
+            ownTime = t;
+        }
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -29,23 +39,26 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     // ATTENTION: never invoke Own() in update()!!
     public void Own(Relinquish r)
     {
-        ownership = true;
         release.Add(r);
-        ctx.SendJson<bool>(true);
+        Own();
     }
     public void Own()
     {
         ownership = true;
-        ctx.SendJson<bool>(true);
+        lastOwnedTime = DateTime.UtcNow;
+        ctx.SendJson<Message>(new Message(lastOwnedTime));
     }
-    public void UnOwn()
+    public void UnOwn(DateTime timeToUnOwn)
     {
-        ownership = false;
-        foreach (var r in release)
+        if (timeToUnOwn > lastOwnedTime)
         {
-            r();
-        }
-        release.Clear();
+            ownership = false;
+            foreach (var r in release)
+            {
+                r();
+            }
+            release.Clear();
+        }    
     }
 
     // Update is called once per frame
@@ -56,6 +69,8 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
 
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
     {
-        UnOwn();
+        var msg = message.FromJson<Message>();
+        DateTime remoteOwnedTime = msg.ownTime;
+        UnOwn(remoteOwnedTime); 
     }
 }
