@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11792358, g: 0.15363058, b: 0.116854526, a: 1}
+  m_IndirectSpecularColor: {r: 0.118014105, g: 0.15365869, b: 0.11691452, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -181,6 +181,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 194913761, guid: 2a81f2ab96d78d849a3042526c14013d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bfd248111ba1ebf4da2d593f817e5743, type: 2}
     - target: {fileID: 23000012573269108, guid: 2a81f2ab96d78d849a3042526c14013d,
         type: 3}
       propertyPath: m_CastShadows
@@ -1866,6 +1870,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser_Gun_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1465335708094805795, guid: fc65b80b510391d4c9674732679be00c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465335709868882908, guid: fc65b80b510391d4c9674732679be00c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bfd248111ba1ebf4da2d593f817e5743, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc65b80b510391d4c9674732679be00c, type: 3}
 --- !u!1 &1213258708
@@ -1980,10 +1994,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Mirror
   offset: {x: 0, y: 0, z: 0}
-  scale: {x: 0.05, y: 0.05, z: 0.05}
+  scale: 0.03
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
+  color: {r: 110, g: 190, b: 200, a: 1}
   OptionalPlayerAppearRadius: 20
   OptionalSphere: {fileID: 0}
 --- !u!1001 &1267083302
@@ -2694,10 +2709,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Target
   offset: {x: 0, y: 0, z: 0}
-  scale: {x: 0.05, y: 0.05, z: 0.05}
+  scale: 0.03
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
+  color: {r: 110, g: 190, b: 200, a: 1}
   OptionalPlayerAppearRadius: 20
   OptionalSphere: {fileID: 919132148823618125}
 --- !u!1 &1335502380 stripped
@@ -2936,10 +2952,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Mirror
   offset: {x: 0, y: 0, z: 0}
-  scale: {x: 0.05, y: 0.05, z: 0.05}
+  scale: 0.03
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
+  color: {r: 110, g: 190, b: 200, a: 1}
   OptionalPlayerAppearRadius: 20
   OptionalSphere: {fileID: 0}
 --- !u!1 &1730543186 stripped
