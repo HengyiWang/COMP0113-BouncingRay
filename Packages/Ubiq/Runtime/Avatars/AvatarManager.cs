@@ -173,6 +173,21 @@ namespace Ubiq.Avatars
             if (local)
             {
                 avatar.gameObject.name = "My Avatar #" + avatar.Id.ToString();
+                foreach (Transform child in avatar.transform)
+                {
+                    if (child.name == "Floating_BodyA")
+                    {
+                        foreach (Transform bodyPart in child.transform)
+                        {
+                            if (bodyPart.name == "Floating_Head")
+                            {
+
+                                bodyPart.gameObject.SetActive(false);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             else
             {
