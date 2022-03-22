@@ -6,8 +6,8 @@ public class TextAbove : MonoBehaviour
 {
     public string Text = "Hello World";
 
-    public Vector3 offset = new Vector3(0, 0, 0);
-    public Vector3 scale = new Vector3(0.05f, 0.05f, 0.05f);
+    public Vector3 offset = new Vector3(0, 0.5f, 0);
+    public float scale = 0.03f;
     public float CharacterSpacing = 4f;
     public float LineSpacing = 22f;
     public float SpaceWidth = 8f;
@@ -54,7 +54,7 @@ public class TextAbove : MonoBehaviour
         simpleHelvetica.CharacterSpacing = CharacterSpacing;
         simpleHelvetica.LineSpacing = LineSpacing;
         simpleHelvetica.SpaceWidth = SpaceWidth;
-        simpleHelvetica.transform.localScale = scale;
+        simpleHelvetica.transform.localScale = new Vector3(scale, scale, scale);
         textInstance.transform.Translate(offset);
 
         MeshRenderer meshRenderer = findMeshRenderer();

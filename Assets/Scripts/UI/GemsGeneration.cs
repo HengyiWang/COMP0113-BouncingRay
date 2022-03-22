@@ -27,6 +27,7 @@ public class GemsGeneration : MonoBehaviour
         sphereMaterial = sphere.GetComponent<MeshRenderer>().material;
 
         existingDecorations = new List<GameObject>();
+        GameObject gemsContainer = new GameObject("GemsContainer");
 
         for (int i = 0; i < amount; i++)
         {
@@ -34,6 +35,7 @@ public class GemsGeneration : MonoBehaviour
             Vector3 chosenLocation = Random.onUnitSphere * sphereRadius + sphereCenter;
             GameObject spawnedInstance = Instantiate(chosenPrefab, chosenLocation, Quaternion.identity);
             spawnedInstance.transform.localScale = new Vector3(scale, scale, scale);
+            spawnedInstance.transform.parent = gemsContainer.transform;
             setMaterial(spawnedInstance, sphereMaterial);
             spawnedInstance.transform.up = (sphereCenter - chosenLocation).normalized;
             existingDecorations.Add(spawnedInstance);

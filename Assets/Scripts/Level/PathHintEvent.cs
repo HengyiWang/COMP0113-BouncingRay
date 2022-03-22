@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class PathHintEvent : LevelEvent
 {
-    public GameObject objToAdd;
+    public GameObject OptionalobjToAdd;
     public List<Transform> destinations;
-    public GameObject pathHint;
+    public GameObject OptionalPathHint;
     public GameObject sphere;
     public Vector3 hintScale;
     public Vector3 hintRotation;
@@ -22,9 +22,19 @@ public class PathHintEvent : LevelEvent
 
     protected override void EventStart(ReadOnlyCollection<LevelEvent> previousEvents, Queue<LevelEvent> followingEvents)
     {
-        walkHint = objToAdd.AddComponent<WalkHint>();
+        if (OptionalobjToAdd == null)
+        {
+            OptionalobjToAdd = GameObject.Find("Player");
+        }
+
+        if (OptionalPathHint == null)
+        {
+            OptionalPathHint = Resources.Load<GameObject>("arrow");
+        }
+
+        walkHint = OptionalobjToAdd.AddComponent<WalkHint>();
         walkHint.sphere = sphere;
-        walkHint.pathHint = pathHint;
+        walkHint.pathHint = OptionalPathHint;
         walkHint.hintScale = hintScale;
         walkHint.hintRotation = hintRotation;
         walkHint.destinations = new List<Transform>();

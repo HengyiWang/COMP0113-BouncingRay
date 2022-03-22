@@ -16,20 +16,18 @@ public class ChangeLevelEvent : LevelEvent
     {
         teleportorInstance = Instantiate(teleportor, position, Quaternion.identity);
         teleportorInstance.GetComponent<SceneSwitcher>().targetScene = targetScene;
+        TextAbove textAbove = teleportorInstance.AddComponent<TextAbove>();
+        textAbove.Text = "Return To Spacecraft";
     }
 
     protected override void EventUpdate(ReadOnlyCollection<LevelEvent> previousEvents, Queue<LevelEvent> followingEvents)
     {
-        
+
     }
 
     protected override bool IsCompleted()
     {
-        return false;
-    }
-
-    public override void OnEventDestory()
-    {
-        Destroy(teleportorInstance);
+        Debug.Log(teleportorInstance != null);
+        return teleportorInstance != null;
     }
 }

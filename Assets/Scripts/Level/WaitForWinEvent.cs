@@ -19,6 +19,6 @@ public class WaitForWinEvent : LevelEvent
 
     protected override bool IsCompleted()
     {
-        return scoreManager.score == scoreManager.total;
+        return scoreManager.score == scoreManager.total && GameObject.Find("Robot").GetComponent<Robots>().isHitted;
     }
 }
