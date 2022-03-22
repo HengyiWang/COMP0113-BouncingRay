@@ -57,7 +57,7 @@ public class Shoot : MonoBehaviour
             laserIndices = new List<Vector3>();
             updateLaser();
         }
-        if (Input.GetButtonUp("Fire1"))//when release mouse left button
+        if (!clicked)//(Input.GetButtonUp("Fire1"))//when release mouse left button
         {
             //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
             score_this_gun = 0;
