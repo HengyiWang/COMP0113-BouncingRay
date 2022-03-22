@@ -57,12 +57,15 @@ public class Shoot : MonoBehaviour
             laserIndices = new List<Vector3>();
             updateLaser();
         }
-        if (!clicked)//(Input.GetButtonUp("Fire1"))//when release mouse left button
+        if (!clicked)//(Input.GetButtonUp("Fire1"))
         {
             //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
             score_this_gun = 0;
             GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
 
+        }
+        if (Input.GetButtonUp("Fire1"))//when release mouse left button
+        {
             clearMirrorSoundsTag();
         }
     }
@@ -184,11 +187,10 @@ public class Shoot : MonoBehaviour
                 score_this_gun = score;
             }
             
-            if (score == number_of_all_gems && number_of_all_gems > 0)
-            {
-                hitInfo.collider.gameObject.GetComponent<Robots>().energy = true;
-    
-            }
+            //if (score == number_of_all_gems && number_of_all_gems > 0)
+            //{
+            //    hitInfo.collider.gameObject.GetComponent<Robots>().energy = true;
+            //}
         }
     }
 }

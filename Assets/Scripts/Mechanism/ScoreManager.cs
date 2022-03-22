@@ -24,5 +24,9 @@ public class ScoreManager : MonoBehaviour
             child.GetComponent<Shoot>().score_this_gun = 0;
         }
         score = score_of_all_gun;
+        if (score == total && total > 0)
+        {
+            GameObject.Find("Robot").GetComponent<Robots>().energy = true;
+        }
     }
 }
