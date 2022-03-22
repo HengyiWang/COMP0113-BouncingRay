@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunNormalGravity : MonoBehaviour
+public class NormalGravity : MonoBehaviour
 {
     public float gravity = 9.8f; // gravity acceleration
     public float maxRaycastDistance = 100.0f;  // max distance to ground
     public int walkableLayerNumber = 8;
 
-    private Vector3 currNormal;
-
     public GameObject sphere;
+
+    private Vector3 currNormal;
 
     // Start is called before the first frame update
     void Start()
@@ -26,19 +26,17 @@ public class GunNormalGravity : MonoBehaviour
         currNormal = sphereCenter - transform.position;
         currNormal = currNormal.normalized;
         float distanceToCenter = Vector3.Distance(sphereCenter, transform.position);
-        
+
         if (distanceToCenter > sphereRadius)
         {
-            Vector3 spawnLocation = sphereCenter + (-currNormal * (sphereRadius - 3));
-            transform.position = spawnLocation;
+            Vector3 returnToSphereLocation = sphereCenter + (-currNormal * (sphereRadius - 10));
+            transform.position = returnToSphereLocation;
         }
+
     }
 
     void FixedUpdate()
     {
-        if (!GetComponent<GunGraspable>().grasped)
-        {
-            GetComponent<Rigidbody>().AddForce(-gravity * GetComponent<Rigidbody>().mass * currNormal);
-        }
+        GetComponent<Rigidbody>().AddForce(-gravity * GetComponent<Rigidbody>().mass * currNormal);
     }
 }
