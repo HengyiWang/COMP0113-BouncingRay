@@ -9,6 +9,7 @@ public class GemsGeneration : MonoBehaviour
     public GemCatalogue gemCatalogue;
     public int amount = 100;
     public int randomSeed = 42;
+    public float scale = 0.5f;
 
     private Vector3 sphereCenter;
     private float sphereRadius;
@@ -32,6 +33,7 @@ public class GemsGeneration : MonoBehaviour
             GameObject chosenPrefab = gemCatalogue.GetPrefab(Random.Range(0, gemCatalogue.size));
             Vector3 chosenLocation = Random.onUnitSphere * sphereRadius + sphereCenter;
             GameObject spawnedInstance = Instantiate(chosenPrefab, chosenLocation, Quaternion.identity);
+            spawnedInstance.transform.localScale = new Vector3(scale, scale, scale);
             setMaterial(spawnedInstance, sphereMaterial);
             spawnedInstance.transform.up = (sphereCenter - chosenLocation).normalized;
             existingDecorations.Add(spawnedInstance);

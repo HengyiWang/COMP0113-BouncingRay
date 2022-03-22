@@ -172,6 +172,7 @@
     <Compile Include="Assets\Scripts\UI\GemsGeneration.cs" />
     <Compile Include="Assets\Scripts\UI\NavMeshModifier.cs" />
     <Compile Include="Assets\Scripts\UI\NavMeshModifierVolume.cs" />
+    <Compile Include="Assets\Scripts\UI\TextAbove.cs" />
     <Compile Include="Assets\Scripts\UI\UIScore.cs" />
     <Compile Include="Assets\Scripts\UI\WalkHint.cs" />
     <Compile Include="Assets\Shaders\MadeByProfessorOakie\SimpleSonarShader\Example\SimpleSonarShader_ExampleCollision.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
     <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Scripts\U10PS_SnowOverTime.cs" />
     <Compile Include="Assets\Shaders\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
+    <Compile Include="Assets\Simple Helvetica 1\SimpleHelvetica.cs" />
     <Compile Include="Assets\Test.cs" />
     <Compile Include="Assets\Yurowm\Demo\Scripts\Actions.cs" />
     <Compile Include="Assets\Yurowm\Demo\Scripts\CharacterPanel.cs" />
@@ -205,6 +207,7 @@
     <None Include="Assets\Prefabs\MagicMirror\Prefab\MirrorShader.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Intro\Materials\FadeLeft.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Environments\Apartment\Sources.txt" />
+    <None Include="Assets\Simple Helvetica 1\readme.txt" />
     <None Include="Assets\Prefabs\MagicMirror\Prefab\MirrorShaderBumpMap.shader" />
     <None Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Assets\Avatars\Floating\LICENSE.txt" />
     <None Include="Assets\Luminaris Starship\Documentation\Readme Luminaris.txt" />

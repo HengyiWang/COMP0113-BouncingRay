@@ -62,6 +62,7 @@
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Intro\Scripts\Editor\SceneInfoEditor.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Intro\Scripts\Editor\TexturedAvatarEditor.cs" />
     <Compile Include="Assets\Samples\Ubiq\0.2.0-alpha.4\Samples\Single\Rooms\Scripts\Editor\RoomClientJoinHelperEditor.cs" />
+    <Compile Include="Assets\Simple Helvetica 1\Editor\SimpleHelveticaCustomEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

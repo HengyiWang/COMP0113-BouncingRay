@@ -138,7 +138,7 @@ public class SimpleHelveticaCustomEditor : Editor {
 			
 			EditorGUILayout.Space();
 			if(GUILayout.Button("Apply\nMesh Renderer\nSettings", GUILayout.MaxWidth(120))) {
-				targetSH.ApplyMeshRenderer();
+				targetSH.ApplyMeshRenderer(null);
 	        }
 			EditorGUILayout.HelpBox("Cannot Undo when Applying Mesh Renderer Settings", MessageType.None);
 	        

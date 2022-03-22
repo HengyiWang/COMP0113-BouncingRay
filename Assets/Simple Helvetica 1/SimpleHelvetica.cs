@@ -5,8 +5,8 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
 
-[ExecuteInEditMode]
 public class SimpleHelvetica : MonoBehaviour {
 
 	[HideInInspector]
@@ -17,6 +17,8 @@ public class SimpleHelvetica : MonoBehaviour {
 	public float LineSpacing = 22f;
 	[HideInInspector]
 	public float SpaceWidth = 8f; //how wide should the "space" character be?
+	[HideInInspector]
+	public Material material = null;
 			
 	//box collider variables
 	[HideInInspector]
@@ -72,8 +74,7 @@ public class SimpleHelvetica : MonoBehaviour {
 
 	void Update()
     {
-		Text = "Score: " + GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score.ToString();
-		GenerateText();
+		//GenerateText();
 	}
 
 	//Generate New 3D Text
@@ -82,6 +83,8 @@ public class SimpleHelvetica : MonoBehaviour {
 		//Debug.Log ("GenerateText Called");
 		
 		ResetText(); //reset before generating new text
+
+		float longestLine = 0;
 		
 		//check all letters
 		for (int ctr = 0; ctr <= Text.Length - 1; ctr++ ){			
@@ -118,12 +121,21 @@ public class SimpleHelvetica : MonoBehaviour {
 				
 				//find the width of the letter used
 				Mesh mesh = LetterToShow.GetComponent<MeshFilter>().sharedMesh;
+				if (material != null)
+                {
+					LetterToShow.GetComponent<MeshRenderer>().material = material;
+				}
 				Bounds bounds = mesh.bounds;
 				CharXLocation += bounds.size.x;
 				//Debug.Log (bounds.size.x*ObjScale.x);
 			}
 			else {
 				CharXLocation += SpaceWidth;
+			}
+
+			if (longestLine < CharXLocation - SpaceWidth)
+			{
+				longestLine = CharXLocation - SpaceWidth;
 			}
 		}
 
@@ -134,27 +146,37 @@ public class SimpleHelvetica : MonoBehaviour {
 		//disable child objects inside _Alphabets
 		transform.Find("_Alphabets").gameObject.SetActiveRecursively(false);
 #endif
-		
-	}
+
+
+		foreach (Transform child in transform)
+        {
+			if (child.name != "_Alphabets")
+            {
+				child.transform.localPosition -= new Vector3(longestLine / 2, CharYLocation / 2, 0);
+			}
+		}
+    }
 	
 
 	void AddLetter(GameObject LetterObject){
 		
 		GameObject NewLetter = Instantiate(LetterObject, transform.position, transform.rotation) as GameObject;
-		NewLetter.transform.parent=transform; //setting parent relationship
+		NewLetter.transform.parent= transform; //setting parent relationship
 		
 		//rename instantiated object
 		NewLetter.name = LetterObject.name;
-		
+
 		//scale accoring to parent obj scale
-		float newScaleX = NewLetter.transform.localScale.x*ObjScale.x; 
-		float newScaleY = NewLetter.transform.localScale.y*ObjScale.y; 
-		float newScaleZ = NewLetter.transform.localScale.z*ObjScale.z; 
-		
-		Vector3 newScaleAll = new Vector3(newScaleX, newScaleY, newScaleZ);
-		NewLetter.transform.localScale = newScaleAll;
+		//float newScaleX = NewLetter.transform.localScale.x*ObjScale.x; 
+		//float newScaleY = NewLetter.transform.localScale.y*ObjScale.y; 
+		//float newScaleZ = NewLetter.transform.localScale.z*ObjScale.z; 
+
+		//Vector3 newScaleAll = new Vector3(newScaleX, newScaleY, newScaleZ);
+		//NewLetter.transform.localScale = newScaleAll;
+
+		NewLetter.transform.localScale = new Vector3(1,1,1);
 		//------------------------------------
-		
+
 		//dealing with characters with a line down on the left (kerning, especially for use with multiple lines)
 		if (CharXLocation == 0)
 			if (NewLetter.name == "B" || 
@@ -410,25 +432,29 @@ public class SimpleHelvetica : MonoBehaviour {
 		
 	}
 	
-	public void ApplyMeshRenderer(){
-		
-		MeshRenderer selfMeshRenderer=GetComponent<MeshRenderer>();
-		bool selfMesherRendererCastShadows = selfMeshRenderer.castShadows;
+	public void ApplyMeshRenderer(MeshRenderer selfMeshRenderer)
+	{
+		if (selfMeshRenderer == null)
+        {
+			selfMeshRenderer = GetComponent<MeshRenderer>();
+        }
+
+		ShadowCastingMode selfMesherRendererCastShadows = selfMeshRenderer.shadowCastingMode;
 		bool selfMesherRendererReceiveShadows = selfMeshRenderer.receiveShadows;
 		Material[] selfMesherRendererSharedMaterials = selfMeshRenderer.sharedMaterials;
-		bool selfMesherRendererUseLightProbes = selfMeshRenderer.useLightProbes;
+		LightProbeUsage selfMesherRendererUseLightProbes = selfMeshRenderer.lightProbeUsage;
 		Transform selfMesherRendererLightProbeAnchor = selfMeshRenderer.probeAnchor;
 			
-		Debug.Log ("Apply MeshRenderer");
+		//Debug.Log ("Apply MeshRenderer");
 		
 		foreach (Transform child in transform.Find ("_Alphabets")){
 			MeshRenderer thisMeshRenderer = child.gameObject.GetComponent<MeshRenderer>();
-			Debug.Log (selfMeshRenderer);
+			//Debug.Log (selfMeshRenderer);
 			if (thisMeshRenderer!=null){
-				thisMeshRenderer.castShadows = selfMesherRendererCastShadows;
+				thisMeshRenderer.shadowCastingMode = selfMesherRendererCastShadows;
 				thisMeshRenderer.receiveShadows = selfMesherRendererReceiveShadows;
 				thisMeshRenderer.sharedMaterials = selfMesherRendererSharedMaterials;
-				thisMeshRenderer.useLightProbes = selfMesherRendererUseLightProbes;
+				thisMeshRenderer.lightProbeUsage = selfMesherRendererUseLightProbes;
 				thisMeshRenderer.probeAnchor = selfMesherRendererLightProbeAnchor;
 			}
 		}
@@ -436,10 +462,10 @@ public class SimpleHelvetica : MonoBehaviour {
 		foreach (Transform child in transform){
 			MeshRenderer thisMeshRenderer = child.gameObject.GetComponent<MeshRenderer>();
 			if (thisMeshRenderer!=null){
-				thisMeshRenderer.castShadows = selfMesherRendererCastShadows;
+				thisMeshRenderer.shadowCastingMode = selfMesherRendererCastShadows;
 				thisMeshRenderer.receiveShadows = selfMesherRendererReceiveShadows;
 				thisMeshRenderer.sharedMaterials = selfMesherRendererSharedMaterials;
-				thisMeshRenderer.useLightProbes = selfMesherRendererUseLightProbes;
+				thisMeshRenderer.lightProbeUsage = selfMesherRendererUseLightProbes;
 				thisMeshRenderer.probeAnchor = selfMesherRendererLightProbeAnchor;
 			}
 		}
