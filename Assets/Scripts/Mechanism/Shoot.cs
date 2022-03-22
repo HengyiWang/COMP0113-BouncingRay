@@ -97,7 +97,7 @@ public class Shoot : MonoBehaviour
         //laser.SetPosition(0,transform.position);
         Vector3 startingPos = transform.TransformPoint(muzzlePosition);
         CastRay(startingPos, transform.forward, laser, true);
-        GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
+        //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
         score = 0;
 
         laserIndices = new List<Vector3>();
@@ -177,7 +177,11 @@ public class Shoot : MonoBehaviour
         if (hitInfo.collider.gameObject.tag == "Robot")
         {
             hitInfo.collider.gameObject.GetComponent<Robots>().isHitted = true;
-
+            if (calScore)
+            {
+                GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
+            }
+            
             if (score == number_of_all_gems && number_of_all_gems > 0)
             {
                 hitInfo.collider.gameObject.GetComponent<Robots>().energy = true;
