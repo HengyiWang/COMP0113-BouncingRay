@@ -5,9 +5,8 @@ using Ubiq.Messaging;
 using Ubiq.Samples;
 using System;
 
-// set the basics for network object that is already present at the start of the game
-// 1. network id
-// 2. ownership
+// ownership mechanism (seizable mutex)
+// It is also an INetworkComponent that takes charge of the ownership negotiation
 public class NetworkedOwnership : MonoBehaviour, INetworkComponent
 {
     // if true, this object is owned locally, otherwise remotely
@@ -45,11 +44,14 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     public void Own()
     {
         ownership = true;
+        // seal the timestamp
         lastOwnedTime = DateTime.UtcNow;
+        // send message to other peers to request UnOwn()
         ctx.SendJson<Message>(new Message(lastOwnedTime));
     }
     public void UnOwn(DateTime timeToUnOwn)
     {
+        // check the timestamp, only requests that are later can apply
         if (timeToUnOwn > lastOwnedTime)
         {
             ownership = false;
