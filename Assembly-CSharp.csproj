@@ -148,6 +148,7 @@
     <Compile Include="Assets\Scripts\Level\IfEvent.cs" />
     <Compile Include="Assets\Scripts\Level\Level0Controller.cs" />
     <Compile Include="Assets\Scripts\Level\Level1Controller.cs" />
+    <Compile Include="Assets\Scripts\Level\Level2Controller.cs" />
     <Compile Include="Assets\Scripts\Level\LevelController.cs" />
     <Compile Include="Assets\Scripts\Level\LevelEvent.cs" />
     <Compile Include="Assets\Scripts\Level\MirrorHandHintEvent.cs" />
