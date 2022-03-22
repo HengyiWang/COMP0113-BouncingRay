@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 194913760}
   - component: {fileID: 194913761}
   - component: {fileID: 5634785570860816855}
+  - component: {fileID: 356235852893080655}
   m_Layer: 0
   m_Name: Pistol27
   m_TagString: Untagged
@@ -115,7 +116,7 @@ SphereCollider:
   m_GameObject: {fileID: 197194}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: -0.0022772513, y: 0.10249852, z: 0.09128204}
@@ -354,7 +355,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.11764705, g: 0.59581107, b: 1, a: 1}
+      key0: {r: 0.30980393, g: 0.15686275, b: 0.5882353, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -405,3 +406,17 @@ MonoBehaviour:
   maxRaycastDistance: 100
   walkableLayerNumber: 8
   sphere: {fileID: 0}
+--- !u!64 &356235852893080655
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300010, guid: e7fb389dc3db45f41897ccc091889864, type: 3}
