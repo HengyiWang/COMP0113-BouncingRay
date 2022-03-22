@@ -22,3 +22,4 @@ public class WaitForWinEvent : LevelEvent
         return scoreManager.score == scoreManager.total && GameObject.Find("Robot").GetComponent<Robots>().isHitted;
     }
 }
+ 

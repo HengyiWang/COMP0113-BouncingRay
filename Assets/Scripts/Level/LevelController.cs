@@ -124,6 +124,10 @@ public abstract class LevelController : MonoBehaviour
     // helper methods
     protected void initialize(List<LevelEvent> events)
     {
+        if (events.Count == 0)
+        {
+            return;
+        }
         EventChain eventChain = OnInit(events[0]);
         for (int i = 1; i < events.Count; i++)
         {

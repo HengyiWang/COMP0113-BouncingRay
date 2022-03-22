@@ -469,10 +469,30 @@ public class SimpleHelvetica : MonoBehaviour {
 				thisMeshRenderer.probeAnchor = selfMesherRendererLightProbeAnchor;
 			}
 		}
-		
-		
 	}
-	
+
+	public void ApplyColor(Color color)
+	{
+		foreach (Transform child in transform.Find("_Alphabets"))
+		{
+			MeshRenderer thisMeshRenderer = child.gameObject.GetComponent<MeshRenderer>();
+
+			if (thisMeshRenderer != null)
+			{
+				thisMeshRenderer.material.color = color;
+			}
+		}
+
+		foreach (Transform child in transform)
+		{
+			MeshRenderer thisMeshRenderer = child.gameObject.GetComponent<MeshRenderer>();
+			if (thisMeshRenderer != null)
+			{
+				thisMeshRenderer.material.color = color;
+			}
+		}
+	}
+
 	public void DisableSelf(){
 		
 		enabled=false;
