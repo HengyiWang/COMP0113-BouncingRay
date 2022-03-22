@@ -144,6 +144,7 @@
     <Compile Include="Assets\Scripts\Interaction\Switch.cs" />
     <Compile Include="Assets\Scripts\Interaction\grasp.cs" />
     <Compile Include="Assets\Scripts\Level\ChangeLevelEvent.cs" />
+    <Compile Include="Assets\Scripts\Level\EscapeScene.cs" />
     <Compile Include="Assets\Scripts\Level\IfCloserToAEvent.cs" />
     <Compile Include="Assets\Scripts\Level\IfEvent.cs" />
     <Compile Include="Assets\Scripts\Level\Level0Controller.cs" />
