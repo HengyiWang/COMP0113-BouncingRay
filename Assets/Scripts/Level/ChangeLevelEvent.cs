@@ -27,7 +27,6 @@ public class ChangeLevelEvent : LevelEvent
 
     protected override bool IsCompleted()
     {
-        Debug.Log(teleportorInstance != null);
         return teleportorInstance != null;
     }
 }
