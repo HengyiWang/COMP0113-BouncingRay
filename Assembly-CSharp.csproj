@@ -163,6 +163,7 @@
     <Compile Include="Assets\Scripts\Mechanism\Floating.cs" />
     <Compile Include="Assets\Scripts\Mechanism\FloorNormalAdjust.cs" />
     <Compile Include="Assets\Scripts\Mechanism\GunHand.cs" />
+    <Compile Include="Assets\Scripts\Mechanism\GunNormalGravity.cs" />
     <Compile Include="Assets\Scripts\Mechanism\MirrorHand.cs" />
     <Compile Include="Assets\Scripts\Mechanism\Robots.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ScoreManager.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Assets\Scripts\UI\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\Scripts\UI\RandomMove.cs" />
     <Compile Include="Assets\Scripts\UI\RobotSpawner.cs" />
+    <Compile Include="Assets\Scripts\UI\ScoreHelvetica.cs" />
     <Compile Include="Assets\Scripts\UI\TextAbove.cs" />
     <Compile Include="Assets\Scripts\UI\UIScore.cs" />
     <Compile Include="Assets\Scripts\UI\WalkHint.cs" />

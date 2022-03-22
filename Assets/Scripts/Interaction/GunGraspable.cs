@@ -17,7 +17,7 @@ public class GunGraspable : MyFollowGraspable, IGraspable
             ownershipComp.Own(relinquish);
         }
         desiredForward = Vector3.RotateTowards(transform.forward, follow.forward, 180f, 0f);
-        rb.useGravity = false;
+        //rb.useGravity = false;
         rb.isKinematic = true;
     }
     public void relinquish()
@@ -28,7 +28,7 @@ public class GunGraspable : MyFollowGraspable, IGraspable
     public new void Release(Hand controller)
     {
         base.Release(controller);
-        rb.useGravity = true;
+        //rb.useGravity = true;
         rb.isKinematic = false;
     }
 

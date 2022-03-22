@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 194913759}
   - component: {fileID: 194913760}
   - component: {fileID: 194913761}
+  - component: {fileID: 5634785570860816855}
   m_Layer: 0
   m_Name: Pistol27
   m_TagString: Untagged
@@ -227,8 +228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 100
+  colorID: 0
   clicked: 0
-  score: 0
+  score_this_gun: 0
   muzzlePosition: {x: 0, y: 0.15, z: 0.35}
 --- !u!114 &2292495416960691321
 MonoBehaviour:
@@ -387,3 +389,19 @@ LineRenderer:
     generateLightingData: 1
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &5634785570860816855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd2b368840399f4aa19cea8e26c7922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 9.8
+  maxRaycastDistance: 100
+  walkableLayerNumber: 8
+  sphere: {fileID: 0}

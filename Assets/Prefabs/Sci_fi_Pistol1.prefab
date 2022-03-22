@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1109935485}
   - component: {fileID: 1109935486}
   - component: {fileID: 1109935487}
+  - component: {fileID: 7648961859878294747}
   m_Layer: 0
   m_Name: Sci_fi_Pistol1
   m_TagString: Pistol
@@ -197,8 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 100
+  colorID: 0
   clicked: 0
-  score: 0
+  score_this_gun: 0
   muzzlePosition: {x: 0, y: 4.5, z: 12.5}
 --- !u!54 &356584055
 Rigidbody:
@@ -387,3 +389,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d586b862979bdb346bf0c52485778201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7648961859878294747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465335708094805795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd2b368840399f4aa19cea8e26c7922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 9.8
+  maxRaycastDistance: 100
+  walkableLayerNumber: 8
+  sphere: {fileID: 0}
