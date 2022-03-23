@@ -150,6 +150,7 @@
     <Compile Include="Assets\Scripts\Level\Level0Controller.cs" />
     <Compile Include="Assets\Scripts\Level\Level1Controller.cs" />
     <Compile Include="Assets\Scripts\Level\Level2Controller.cs" />
+    <Compile Include="Assets\Scripts\Level\Level3Controller.cs" />
     <Compile Include="Assets\Scripts\Level\LevelController.cs" />
     <Compile Include="Assets\Scripts\Level\LevelEvent.cs" />
     <Compile Include="Assets\Scripts\Level\MirrorHandHintEvent.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Assets\Scripts\Mechanism\Shoot.cs" />
     <Compile Include="Assets\Scripts\Mechanism\ShootLighting.cs" />
     <Compile Include="Assets\Scripts\UI\Begin.cs" />
+    <Compile Include="Assets\Scripts\UI\ExpandParticleWhenCloseBy.cs" />
     <Compile Include="Assets\Scripts\UI\GemCatalogue.cs" />
     <Compile Include="Assets\Scripts\UI\GemsGeneration.cs" />
     <Compile Include="Assets\Scripts\UI\LevelCompleted.cs" />

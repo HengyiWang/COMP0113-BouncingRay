@@ -128,6 +128,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1514856931}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &118596846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118596845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5712d4e8e1a664645b8a901a9496dd0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeByDistance: 20
+  player: {fileID: 0}
 --- !u!114 &118596850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,12 +156,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Level 0
   offset: {x: 0, y: 2, z: 0}
-  scale: 0.1
+  scale: 0.15
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
   color: {r: 1, g: 1, b: 1, a: 0}
-  OptionalPlayerAppearRadius: 50
+  OptionalPlayerAppearRadius: 1000
   OptionalSphere: {fileID: 0}
 --- !u!1001 &194913755
 PrefabInstance:
@@ -916,32 +930,32 @@ PrefabInstance:
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -22.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5008203253550766632, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
@@ -1256,32 +1270,32 @@ PrefabInstance:
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -22.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fb578800afc87244b5ba3a0fbbd11c0, type: 3}
@@ -1543,6 +1557,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1997960448}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &747877535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747877534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5712d4e8e1a664645b8a901a9496dd0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeByDistance: 20
+  player: {fileID: 0}
 --- !u!114 &747877539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,12 +1585,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Level 1
   offset: {x: 0, y: 2, z: 0}
-  scale: 0.1
+  scale: 0.15
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
   color: {r: 1, g: 1, b: 1, a: 0}
-  OptionalPlayerAppearRadius: 50
+  OptionalPlayerAppearRadius: 1000
   OptionalSphere: {fileID: 0}
 --- !u!1 &802069305
 GameObject:
@@ -2534,6 +2562,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 288149306}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1420351347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420351346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5712d4e8e1a664645b8a901a9496dd0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeByDistance: 20
+  player: {fileID: 0}
 --- !u!114 &1420351351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2548,12 +2590,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Level 2
   offset: {x: 0, y: 2, z: 0}
-  scale: 0.1
+  scale: 0.15
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
   color: {r: 1, g: 1, b: 1, a: 0}
-  OptionalPlayerAppearRadius: 50
+  OptionalPlayerAppearRadius: 1000
   OptionalSphere: {fileID: 0}
 --- !u!1 &1479124930
 GameObject:
@@ -3216,6 +3258,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 498129758}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2045596344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045596343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5712d4e8e1a664645b8a901a9496dd0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeByDistance: 20
+  player: {fileID: 0}
 --- !u!114 &2045596348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,12 +3286,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Level 3
   offset: {x: 0, y: 2, z: 0}
-  scale: 0.1
+  scale: 0.15
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
   color: {r: 1, g: 1, b: 1, a: 0}
-  OptionalPlayerAppearRadius: 50
+  OptionalPlayerAppearRadius: 1000
   OptionalSphere: {fileID: 0}
 --- !u!1 &2127184338 stripped
 GameObject:
