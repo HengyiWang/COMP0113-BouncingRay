@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// rotate hand according 
 public class Shaking : MonoBehaviour
 {
     public float dx=0f;

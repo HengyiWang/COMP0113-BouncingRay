@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// score central, manage score
 public class ScoreManager : MonoBehaviour
 {
     public int score = 0;

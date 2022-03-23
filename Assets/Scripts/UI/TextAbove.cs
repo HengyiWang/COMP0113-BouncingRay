@@ -11,7 +11,6 @@ public class TextAbove : MonoBehaviour
     public float CharacterSpacing = 4f;
     public float LineSpacing = 22f;
     public float SpaceWidth = 8f;
-    public Color color = new Color(110, 190, 200);  // default light blue
 
     public float OptionalPlayerAppearRadius = 20;
     public GameObject OptionalSphere = null;
@@ -63,13 +62,6 @@ public class TextAbove : MonoBehaviour
         {
             simpleHelvetica.ApplyMeshRenderer(meshRenderer);
         }
-
-        if (color != null)
-        {
-            simpleHelvetica.ApplyColor(color);
-        }
-
-        //if (color != null)
 
         simpleHelvetica.GenerateText();
 

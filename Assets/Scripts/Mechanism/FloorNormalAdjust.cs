@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// adjust normal by using normal
 public class FloorNormalAdjust : MonoBehaviour
 {
 

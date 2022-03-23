@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// set the lighting for gun light
 public class ActivatedEmissive : MonoBehaviour
 {
     // Start is called before the first frame update

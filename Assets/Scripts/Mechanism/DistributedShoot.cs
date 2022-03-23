@@ -13,8 +13,6 @@ public class DistributedShoot : MonoBehaviour
     private NetworkedOwnership gunOwnership;
     public int score = 0;
     public Vector3 muzzlePosition = new Vector3(0.0f, 0.0f, 0.0f);
-    //float timer;
-    //float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
     LineRenderer laserRenderer;
     List<Vector3> laserIndices;
 

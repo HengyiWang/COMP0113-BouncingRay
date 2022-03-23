@@ -11,6 +11,7 @@ public class FlashlightGraspable : GunGraspable
     {
         if (follow)
         {
+            // if needs to follow, update flashligh position and up
             transform.up = follow.forward;   
             transform.position = follow.TransformPoint(localGrabPoint);
         }

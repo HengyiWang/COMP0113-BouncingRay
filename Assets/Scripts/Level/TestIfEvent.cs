@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// a dummy class to demo the use of if event
 public class TestIfEvent : IfEvent
 {
 

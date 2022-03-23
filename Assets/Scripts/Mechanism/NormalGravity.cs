@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// apply gravity according to normal
 public class NormalGravity : MonoBehaviour
 {
     public float gravity = 9.8f; // gravity acceleration
@@ -32,11 +33,11 @@ public class NormalGravity : MonoBehaviour
             Vector3 returnToSphereLocation = sphereCenter + (-currNormal * (sphereRadius - 10));
             transform.position = returnToSphereLocation;
         }
-
     }
 
     void FixedUpdate()
     {
+        // add gravity in fixed update
         GetComponent<Rigidbody>().AddForce(-gravity * GetComponent<Rigidbody>().mass * currNormal);
     }
 }

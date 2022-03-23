@@ -35,6 +35,7 @@ public class NetworkedTransform : MonoBehaviour, INetworkComponent
     // Update is called once per frame
     void Update()
     {
+        // send update if we are the owner
         if (ownershipComp && ownershipComp.ownership)
         {
             Message message;

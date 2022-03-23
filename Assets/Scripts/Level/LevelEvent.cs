@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public abstract class LevelEvent : MonoBehaviour
 {
     [HideInInspector]
-    public UnityEvent OnComplete = new UnityEvent();
+    public UnityEvent OnComplete = new UnityEvent();  // called when this event finish
 
     public ReadOnlyCollection<LevelEvent> previousEvents;
     public Queue<LevelEvent> followingEvents;
@@ -21,7 +21,6 @@ public abstract class LevelEvent : MonoBehaviour
     public void Start()
     {
         EventStart(previousEvents, followingEvents);
-
     }
 
     public void Update()

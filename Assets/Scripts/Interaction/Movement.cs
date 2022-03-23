@@ -12,12 +12,12 @@ public class Movement : MonoBehaviour
     public float maxRaycastDistance = 100.0f;  // max distance to ground
     public int walkableLayerNumber = 8;
     public float adjustingHeight = 0.75f;
-    public float normalAdjustLerpSpeed = 5;
+    public float normalAdjustLerpSpeed = 5;  // speed of adjusting character normal
     public float jumpStrength = 10;
     public float moveSpeed = 5.0f;
     public float cameraRotateSpeed = 3f;
     public int maxVerticalViewOffsetAngle = 45;
-    public bool VR = true;
+    public bool VR = true;  // if we are using VR
 
     private Vector3 charNormal;
     private Vector3 charForward;
@@ -35,6 +35,7 @@ public class Movement : MonoBehaviour
 
         cameraOffsetTransform = transform.Find("Camera Offset");
 
+        // check if we are using VR
         VR = VR && UnityEngine.XR.XRSettings.isDeviceActive;
         if (VR)
         {
@@ -45,15 +46,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         adjustAvatarNormalByFloor();
         moveAvatarOnKeyPressed();
         rotateCameraOnRightClick();
         moveAvatarInVR();
-
-        // hack to update avartar here
-        //avatar.torso.position = avatar.baseOfNeckHint.position;
-        //avatar.torso.up = charNormal;
     }
 
     void moveAvatarInVR()
@@ -63,6 +59,7 @@ public class Movement : MonoBehaviour
             return;
         }
 
+        // update similar to ubiq, but this works even if character is not upright
         foreach (var item in handControllers)
         {
             if (item.Right)
@@ -120,6 +117,7 @@ public class Movement : MonoBehaviour
 
     void moveAvatarOnKeyPressed()
     {
+        // move accordingly, same as ubiq implementation
         Vector3 movement = new Vector3(0f, 0f, 0f);
         if (Input.GetKey(KeyCode.A))
         {
@@ -138,26 +136,10 @@ public class Movement : MonoBehaviour
             movement += new Vector3(0f, 0f, -1f);
         }
         transform.Translate(movement * moveSpeed * Time.deltaTime);
-
-        // move the character forth/back with Vertical axis
-        //transform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
-        // movement code - turn left/right with Horizontal axis:
-        //transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
     }
-
-    private Vector3 mouseDragOrigin;
 
     void rotateCameraOnRightClick()
     {
-        //int rightButton = 1;
-
-        //if (Input.GetMouseButtonDown(rightButton))
-        //{
-        //    // first frame held down
-        //    mouseDragOrigin = Input.mousePosition;
-        //    return;
-        //}
-
         if (Input.GetMouseButton(1))
         {
             transform.Rotate(0, Input.GetAxis("Mouse X") * cameraRotateSpeed, 0);

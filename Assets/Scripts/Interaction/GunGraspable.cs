@@ -6,10 +6,10 @@ using UnityEngine;
 public class GunGraspable : MyFollowGraspable, IGraspable
 {
     private Vector3 desiredForward;
-    // Start is called before the first frame update
     private Rigidbody rb;
     public new void Grasp(Hand controller)
     {
+        // grasp if we have ownership
         base.Grasp(controller);
         var ownershipComp = GetComponent<NetworkedOwnership>();
         if (ownershipComp)
@@ -17,7 +17,6 @@ public class GunGraspable : MyFollowGraspable, IGraspable
             ownershipComp.Own(relinquish);
         }
         desiredForward = Vector3.RotateTowards(transform.forward, follow.forward, 180f, 0f);
-        //rb.useGravity = false;
         rb.isKinematic = true;
     }
     public void relinquish()
@@ -28,7 +27,6 @@ public class GunGraspable : MyFollowGraspable, IGraspable
     public new void Release(Hand controller)
     {
         base.Release(controller);
-        //rb.useGravity = true;
         rb.isKinematic = false;
     }
 
@@ -41,9 +39,9 @@ public class GunGraspable : MyFollowGraspable, IGraspable
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // update position and rotation if this gun is grasped
         if (follow)
         {
             if (!followRotation)

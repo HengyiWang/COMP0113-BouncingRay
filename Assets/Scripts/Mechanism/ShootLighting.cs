@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// control the light of the shooting beam
 public class ShootLighting : MonoBehaviour
 {
     // Start is called before the first frame update

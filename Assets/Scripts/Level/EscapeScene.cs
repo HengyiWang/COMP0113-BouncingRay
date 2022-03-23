@@ -23,9 +23,17 @@ public class EscapeScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || (UnityEngine.XR.XRSettings.isDeviceActive && Input.GetKeyDown("XRI_Right_SecondaryButton")))
+        // if pressed escape, return to home scene
+        if (Input.GetKeyDown(KeyCode.Backspace) || (UnityEngine.XR.XRSettings.isDeviceActive && Input.GetKeyDown("XRI_Right_SecondaryButton")))
         {
-            SceneManager.LoadScene("Switch_v2");
+            if (SceneManager.GetActiveScene().name == "Switch_v2")
+            {
+                Application.Quit();
+            }
+            else
+            {
+                SceneManager.LoadScene("Switch_v2");
+            }
         }
     }
 }
