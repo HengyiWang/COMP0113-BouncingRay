@@ -29,15 +29,22 @@ namespace Ubiq.Samples
             {
                 UpdateRoomScene(); // if we've joined a room without a scene
             }
+            else
+            {
+                LoadSceneAsync(name);
+            }
         }
 
         private void OnRoomUpdated(IRoom room)
         {
-            var name = room["scene-name"];
+            // not to load initial scene 
+            // since there are unexpected room updated events
+
+/*            var name = room["scene-name"];
             if (name != null)
             {
                 LoadSceneAsync(name);
-            }
+            }*/
         }
 
         public void UpdateRoomScene()
