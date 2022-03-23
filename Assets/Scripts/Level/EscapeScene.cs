@@ -26,7 +26,14 @@ public class EscapeScene : MonoBehaviour
         // if pressed escape, return to home scene
         if (Input.GetKeyDown(KeyCode.Escape) || (UnityEngine.XR.XRSettings.isDeviceActive && Input.GetKeyDown("XRI_Right_SecondaryButton")))
         {
-            SceneManager.LoadScene("Switch_v2");
+            if (SceneManager.GetActiveScene().name == "Switch_v2")
+            {
+                Application.Quit();
+            }
+            else
+            {
+                SceneManager.LoadScene("Switch_v2");
+            }
         }
     }
 }
