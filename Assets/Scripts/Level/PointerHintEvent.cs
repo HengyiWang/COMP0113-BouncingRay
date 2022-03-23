@@ -6,6 +6,7 @@ using UnityEngine;
 public class PointerHintEvent : LevelEvent
 {
 
+    // hyperparameter that changes the behaviors
     public GameObject pointer;
     public Vector3 position;
     public Vector3 scale;
@@ -18,8 +19,7 @@ public class PointerHintEvent : LevelEvent
     public float dz = 0f;
     public float radius = 0.8f;
 
-    private GameObject pointerInstance;
-
+    private GameObject pointerInstance;  // the instance we created, destory when exit
 
     protected override void EventStart(ReadOnlyCollection<LevelEvent> previousEvents, Queue<LevelEvent> followingEvents)
     {
@@ -44,6 +44,7 @@ public class PointerHintEvent : LevelEvent
 
     protected override bool IsCompleted()
     {
+        // if any gun is grapsed, we completed this task
         GameObject all_laser_gun = GameObject.Find("All_Laser_Gun");
         foreach (Transform child in all_laser_gun.transform)
         {
@@ -55,6 +56,7 @@ public class PointerHintEvent : LevelEvent
         return false;
     }
 
+    // destory to aovid memory leaks
     public override void OnEventDestory() {
         Destroy(pointerInstance);
     }

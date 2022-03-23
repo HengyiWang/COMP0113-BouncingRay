@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
+// for end game event
 public class ChangeLevelEvent : LevelEvent
 {
 

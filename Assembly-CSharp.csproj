@@ -154,7 +154,6 @@
     <Compile Include="Assets\Scripts\Level\LevelController.cs" />
     <Compile Include="Assets\Scripts\Level\LevelEvent.cs" />
     <Compile Include="Assets\Scripts\Level\MirrorHandHintEvent.cs" />
-    <Compile Include="Assets\Scripts\Level\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Level\PathHintEvent.cs" />
     <Compile Include="Assets\Scripts\Level\PointerHintEvent.cs" />
     <Compile Include="Assets\Scripts\Level\TestIfEvent.cs" />

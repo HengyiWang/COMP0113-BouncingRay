@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
+// event branch if A is close to B
 public class IfCloserToAEvent : IfEvent
 {
     public GameObject player;

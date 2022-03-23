@@ -13,6 +13,7 @@ public class NetworkedObject : NetworkedOwnership, INetworkObject
 
     static public RoomClient GetRoomClient()
     {
+        // find the room client in the network scene
         var networkScene = GameObject.Find("Network Scene");
         if (!networkScene)
         {
@@ -25,7 +26,9 @@ public class NetworkedObject : NetworkedOwnership, INetworkObject
     {
         base.Start();
         var rc = GetRoomClient();
+        // try to own when join room
         rc.OnJoinedRoom.AddListener(OwnOnJoinedRoom);
+        // try to own on start
         Own();
     }
 
