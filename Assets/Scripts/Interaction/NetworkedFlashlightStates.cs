@@ -21,9 +21,12 @@ public class NetworkedFlashlightStates : MonoBehaviour, INetworkComponent
     }
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
     {
-        var msg = message.FromJson<Message>();
-        followComp.grasped = msg.grasped;
-        shootComp.clicked = msg.clicked;
+        if (ownershipComp && !ownershipComp.ownership)
+        {
+            var msg = message.FromJson<Message>();
+            followComp.grasped = msg.grasped;
+            shootComp.clicked = msg.clicked;
+        }
     }
     // Start is called before the first frame update
     void Start()

@@ -6,7 +6,7 @@ using Ubiq.Messaging;
 public class NetworkedTransform : MonoBehaviour, INetworkComponent
 {
     private NetworkContext ctx;
-
+    private NetworkedOwnership ownershipComp;
     struct Message
     {
         public Vector3 position;
@@ -16,21 +16,24 @@ public class NetworkedTransform : MonoBehaviour, INetworkComponent
 
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
     {
-        var msg = message.FromJson<Message>();
-        transform.position = msg.position;
-        transform.rotation = msg.rotation;
+        if (ownershipComp && !ownershipComp.ownership)
+        {
+            var msg = message.FromJson<Message>();
+            transform.position = msg.position;
+            transform.rotation = msg.rotation;
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        ownershipComp = GetComponent<NetworkedOwnership>();
         ctx = NetworkScene.Register(this); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        var ownershipComp = GetComponent<NetworkedOwnership>();
         if (ownershipComp && ownershipComp.ownership)
         {
             Message message;

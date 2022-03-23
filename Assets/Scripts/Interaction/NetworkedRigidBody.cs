@@ -12,9 +12,12 @@ public class NetworkedRigidBody : MonoBehaviour, INetworkComponent
     private NetworkContext ctx;
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
     {
-        var msg = message.FromJson<Message>();
-        rb.useGravity = msg.useGravity;
-        rb.isKinematic = msg.isKinematic;
+        if (ownershipComp && !ownershipComp.ownership)
+        {
+            var msg = message.FromJson<Message>();
+            rb.useGravity = msg.useGravity;
+            rb.isKinematic = msg.isKinematic;
+        }   
     }
 
     class Message
