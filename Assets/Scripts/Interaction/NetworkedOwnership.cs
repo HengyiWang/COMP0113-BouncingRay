@@ -19,12 +19,22 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     // timestamp to solve synchronization issues
     public DateTime lastOwnedTime;
 
-    class Message
+    // credit to https://gamedev.stackexchange.com/questions/137523/unity-json-utility-does-not-serialize-datetime
+    [Serializable]
+    struct JsonDateTime
     {
-        public DateTime ownTime;
-        public Message(DateTime t)
+        public long value;
+        public static implicit operator DateTime(JsonDateTime jdt)
         {
-            ownTime = t;
+            // Debug.Log("Converted to time");
+            return DateTime.FromFileTimeUtc(jdt.value);
+        }
+        public static implicit operator JsonDateTime(DateTime dt)
+        {
+            // Debug.Log("Converted to JDT");
+            JsonDateTime jdt = new JsonDateTime();
+            jdt.value = dt.ToFileTimeUtc();
+            return jdt;
         }
     }
 
@@ -51,7 +61,7 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
         if (ctx != null)
         {
             Debug.Log("OK!");
-            ctx.SendJson<Message>(new Message(lastOwnedTime));
+            ctx.SendJson<JsonDateTime>(lastOwnedTime);
         }
         else
         {
@@ -63,7 +73,7 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     {
         // check the timestamp, only requests that are later can apply
         Debug.Log("timeToUnOwn: " + timeToUnOwn.ToString());
-        Debug.Log("timeToUnOwn: " + lastOwnedTime.ToString());
+        Debug.Log("lastOwnedTime: " + lastOwnedTime.ToString());
         if (timeToUnOwn > lastOwnedTime)
         {
             ownership = false;
@@ -86,8 +96,7 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
 
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
     {
-        var msg = message.FromJson<Message>();
-        DateTime remoteOwnedTime = msg.ownTime;
+        DateTime remoteOwnedTime = message.FromJson<JsonDateTime>();
         UnOwn(remoteOwnedTime); 
     }
 }
