@@ -58,22 +58,11 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
         // seal the timestamp
         lastOwnedTime = DateTime.UtcNow;
         // send message to other peers to request UnOwn()
-        if (ctx != null)
-        {
-            Debug.Log("OK!");
-            ctx.SendJson<JsonDateTime>(lastOwnedTime);
-        }
-        else
-        {
-            Debug.Log("Something go wrong!");
-        }
-        
+        ctx.SendJson<JsonDateTime>(lastOwnedTime);
     }
     public void UnOwn(DateTime timeToUnOwn)
     {
         // check the timestamp, only requests that are later can apply
-        Debug.Log("timeToUnOwn: " + timeToUnOwn.ToString());
-        Debug.Log("lastOwnedTime: " + lastOwnedTime.ToString());
         if (timeToUnOwn > lastOwnedTime)
         {
             ownership = false;
@@ -88,10 +77,7 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log(lastOwnedTime.ToString());
-        }   
+
     }
 
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
