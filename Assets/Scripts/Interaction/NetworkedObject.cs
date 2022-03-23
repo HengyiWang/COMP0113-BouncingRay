@@ -22,6 +22,8 @@ public class NetworkedObject : NetworkedOwnership, INetworkObject
     protected override void Start()
     {
         base.Start();
+        var rc = GetRoomClient();
+        rc.OnJoinedRoom.AddListener(OwnOnJoinedRoom);
         Own();
     }
 
@@ -32,9 +34,6 @@ public class NetworkedObject : NetworkedOwnership, INetworkObject
 
     void Awake()
     {
-        var rc = GetRoomClient();
-        rc.OnJoinedRoom.AddListener(OwnOnJoinedRoom);
-
         string uniqueTag = transform.position.ToString() +
                             transform.rotation.ToString();
         Id = new NetworkId((uint)uniqueTag.GetHashCode());
