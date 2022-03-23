@@ -23,6 +23,7 @@ public class EscapeScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if pressed escape, return to home scene
         if (Input.GetKeyDown(KeyCode.Escape) || (UnityEngine.XR.XRSettings.isDeviceActive && Input.GetKeyDown("XRI_Right_SecondaryButton")))
         {
             SceneManager.LoadScene("Switch_v2");
