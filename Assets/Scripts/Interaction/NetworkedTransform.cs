@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ubiq.Messaging;
 
+// network transform of this game objects
 public class NetworkedTransform : MonoBehaviour, INetworkComponent
 {
     private NetworkContext ctx;
