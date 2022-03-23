@@ -62,6 +62,8 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     }
     public void UnOwn(DateTime timeToUnOwn)
     {
+        Debug.Log("time to unown():" + timeToUnOwn.ToString());
+        Debug.Log("last owned time:" + lastOwnedTime.ToString());
         // check the timestamp, only requests that are later can apply
         if (timeToUnOwn > lastOwnedTime)
         {
