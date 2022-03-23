@@ -17,7 +17,8 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     private List<Relinquish> release;
 
     // timestamp to solve synchronization issues
-    private DateTime lastOwnedTime;
+    public DateTime lastOwnedTime;
+
     class Message
     {
         public DateTime ownTime;
@@ -52,6 +53,7 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     public void UnOwn(DateTime timeToUnOwn)
     {
         // check the timestamp, only requests that are later can apply
+        Debug.Log(timeToUnOwn.ToString());
         if (timeToUnOwn > lastOwnedTime)
         {
             ownership = false;
@@ -66,7 +68,10 @@ public class NetworkedOwnership : MonoBehaviour, INetworkComponent
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log(lastOwnedTime.ToString());
+        }   
     }
 
     public void ProcessMessage(ReferenceCountedSceneGraphMessage message)
