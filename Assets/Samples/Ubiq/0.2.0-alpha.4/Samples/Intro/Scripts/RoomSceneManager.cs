@@ -25,6 +25,8 @@ namespace Ubiq.Samples
         private void OnJoinedRoom(IRoom room)
         {
             var name = room["scene-name"];
+            Debug.Log("on join room name:" + name);
+            Debug.Log("on join room: " + name == null);
             if(name == null)
             {
                 UpdateRoomScene(); // if we've joined a room without a scene
@@ -34,6 +36,8 @@ namespace Ubiq.Samples
         private void OnRoomUpdated(IRoom room)
         {
             var name = room["scene-name"];
+            Debug.Log("on update room name:" + name);
+            Debug.Log("on update room: " + name == null);
             if (name != null)
             {
                 LoadSceneAsync(name);
