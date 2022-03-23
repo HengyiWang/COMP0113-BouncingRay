@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// apply gravity to gun, which does not care about normal, but require sphere center
 public class GunNormalGravity : MonoBehaviour
 {
     public float gravity = 9.8f; // gravity acceleration

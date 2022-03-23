@@ -4,6 +4,7 @@ using UnityEngine;
 using Ubiq.Samples;
 using System;
 
+// control shooting mechainsm and score update
 public class Shoot : MonoBehaviour
 {
     public float range = 100f;
@@ -16,14 +17,11 @@ public class Shoot : MonoBehaviour
     public int score_this_gun = 0;
     public Vector3 muzzlePosition = new Vector3(0.0f, 0.0f, 0.0f);
     float timer;
-    //float effectDisplayTime = 0.1f;//10 *Time.deltaTime;
     LineRenderer laser;
     List<Vector3> laserIndices;
 
-    // Start is called before the first frame update
     void Start()
     {
-
         // LineRenderer for the laser
         laser = GetComponent<LineRenderer>();
         ownershipComp = GetComponent<NetworkedOwnership>();
@@ -45,7 +43,7 @@ public class Shoot : MonoBehaviour
         grasped = GetComponent<MyFollowGraspable>().grasped;
         // Update time for one frame
         timer += Time.deltaTime;
-        if (grasped && clicked)
+        if (grasped && clicked)  // update laser when user grasped the gun and pressed shoot
         {
             activateLight();
             BeginShoot();
@@ -57,14 +55,13 @@ public class Shoot : MonoBehaviour
             laserIndices = new List<Vector3>();
             updateLaser();
         }
-        if (!clicked)//(Input.GetButtonUp("Fire1"))
+        if (!clicked)  // disable when user do not click
         {
-            //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = 0;
             score_this_gun = 0;
             GameObject.Find("Robot").GetComponent<Robots>().isHitted = false;
 
         }
-        if (Input.GetButtonUp("Fire1"))//when release mouse left button
+        if (Input.GetButtonUp("Fire1")) // also disable sound
         {
             clearMirrorSoundsTag();
         }
@@ -99,10 +96,8 @@ public class Shoot : MonoBehaviour
         timer = 0.0f;
         laser.enabled = true;
         laserIndices = new List<Vector3>();
-        //laser.SetPosition(0,transform.position);
         Vector3 startingPos = transform.TransformPoint(muzzlePosition);
         CastRay(startingPos, transform.forward, laser, true);
-        //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
         score = 0;
 
         laserIndices = new List<Vector3>();
@@ -120,12 +115,10 @@ public class Shoot : MonoBehaviour
         {
             // if hit something, then checkhit
             CheckHit(hitInfo, dir, laser, calScore);
-            //laser.SetPosition(1, hitInfo.point);
         }
         else
         {
             // if not hit something, set the max range
-            //laser.SetPosition(1, ray.origin+ ray.direction*range);
             laserIndices.Add(ray.GetPoint(range));
             updateLaser();
         }
@@ -167,7 +160,6 @@ public class Shoot : MonoBehaviour
                 hitInfo.collider.gameObject.GetComponent<ScoreMirror>().hitted = false;
             }
 
-            //Debug.Log("Hit reflect object");
             Vector3 pos = hitInfo.point;
             Vector3 dir = Vector3.Reflect(direction,hitInfo.normal);
             CastRay(pos, dir, laser, calScore);
@@ -177,20 +169,14 @@ public class Shoot : MonoBehaviour
             laserIndices.Add(hitInfo.point);
             updateLaser();
         }
-        // Code for robot
+
         if (hitInfo.collider.gameObject.tag == "Robot")
         {
             hitInfo.collider.gameObject.GetComponent<Robots>().isHitted = true;
             if (calScore)
             {
-                //GameObject.Find("ScoreBox").GetComponent<ScoreManager>().score = score;
                 score_this_gun = score;
             }
-            
-            //if (score == number_of_all_gems && number_of_all_gems > 0)
-            //{
-            //    hitInfo.collider.gameObject.GetComponent<Robots>().energy = true;
-            //}
         }
     }
 }

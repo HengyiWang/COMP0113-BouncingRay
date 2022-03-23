@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// destory gun hint when gun is grasped
 public class GunHand : MonoBehaviour
 {
     private GameObject all_laser_gun;

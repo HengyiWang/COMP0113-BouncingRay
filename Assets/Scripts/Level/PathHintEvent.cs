@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
 
+// player hint path to a destination event
 public class PathHintEvent : LevelEvent
 {
     public GameObject OptionalobjToAdd;

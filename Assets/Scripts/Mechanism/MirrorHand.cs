@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// destory mirror hand when grasped
 public class MirrorHand : MonoBehaviour
 {
     private GameObject all_gem;

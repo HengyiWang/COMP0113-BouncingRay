@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// make an object move up and down repeatedly to stimulate floating
 public class Floating : MonoBehaviour
 {
     private NetworkedOwnership ownershipComp;

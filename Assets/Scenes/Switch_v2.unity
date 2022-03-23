@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.118014105, g: 0.15365869, b: 0.11691452, a: 1}
+  m_IndirectSpecularColor: {r: 0.11792358, g: 0.15363058, b: 0.116854526, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -160,7 +160,6 @@ MonoBehaviour:
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
-  color: {r: 110, g: 190, b: 200, a: 1}
   OptionalPlayerAppearRadius: 1000
   OptionalSphere: {fileID: 0}
 --- !u!1001 &194913755
@@ -833,32 +832,32 @@ PrefabInstance:
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2403359147278826090, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -22.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5008203253550766632, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
@@ -1173,32 +1172,32 @@ PrefabInstance:
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458716005747358792, guid: 2fb578800afc87244b5ba3a0fbbd11c0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -22.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fb578800afc87244b5ba3a0fbbd11c0, type: 3}
@@ -1492,7 +1491,6 @@ MonoBehaviour:
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
-  color: {r: 110, g: 190, b: 200, a: 1}
   OptionalPlayerAppearRadius: 1000
   OptionalSphere: {fileID: 0}
 --- !u!1 &802069305
@@ -2466,7 +2464,6 @@ MonoBehaviour:
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
-  color: {r: 110, g: 190, b: 200, a: 1}
   OptionalPlayerAppearRadius: 1000
   OptionalSphere: {fileID: 0}
 --- !u!1 &1479124930
@@ -2493,7 +2490,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479124930}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61225235f201572479846208ba19ecb8, type: 3}
   m_Name: 
@@ -3162,7 +3159,6 @@ MonoBehaviour:
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
-  color: {r: 110, g: 190, b: 200, a: 1}
   OptionalPlayerAppearRadius: 1000
   OptionalSphere: {fileID: 0}
 --- !u!1 &2127184338 stripped
@@ -3541,7 +3537,6 @@ MonoBehaviour:
   CharacterSpacing: 4
   LineSpacing: 22
   SpaceWidth: 8
-  color: {r: 110, g: 190, b: 200, a: 1}
   OptionalPlayerAppearRadius: 70
   OptionalSphere: {fileID: 0}
 --- !u!4 &543450652831230199

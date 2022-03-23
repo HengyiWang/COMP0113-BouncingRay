@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// if player fly out of sphere, reset it to a position within sphere
 public class FixPlayerFallingOutOfSphere : MonoBehaviour
 {
 
