@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ubiq.Messaging;
 
+// class for flash light states networking
 public class NetworkedFlashlightStates : MonoBehaviour, INetworkComponent
 {
     private NetworkContext ctx;
