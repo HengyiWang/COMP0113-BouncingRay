@@ -269,7 +269,7 @@ MonoBehaviour:
   jumpStrength: 10
   moveSpeed: 10
   cameraRotateSpeed: 3
-  maxVerticalViewOffsetAngle: 45
+  maxVerticalViewOffsetAngle: 110
   VR: 1
 --- !u!1 &1206544753847649310
 GameObject:
@@ -384,6 +384,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   previousPosition: {x: 0, y: 0, z: 0}
   mainCamera: {fileID: 0}
+  rotateSensitivity: 0.2
 --- !u!1 &1206544754330353986
 GameObject:
   m_ObjectHideFlags: 0

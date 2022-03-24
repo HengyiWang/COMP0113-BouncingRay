@@ -14,6 +14,7 @@ namespace Ubiq.XR
         public Camera mainCamera;
 
         private Vector3 previousMousePosition;
+        public float rotateSensitivity = 1.0f;
 
         private void Awake()
         {
@@ -42,7 +43,8 @@ namespace Ubiq.XR
             // Rotate the hand using the mouse
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                transform.Rotate(new Vector3(-mouseDelta.y, mouseDelta.x, 0f), Space.Self);
+                transform.Rotate(new Vector3(-rotateSensitivity * mouseDelta.y, 
+                    rotateSensitivity * mouseDelta.x, 0f), Space.Self);
             }
 
             // Rotate the hand using the raycaster
